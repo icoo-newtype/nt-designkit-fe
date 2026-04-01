@@ -77,7 +77,7 @@ getList();
             <GridTableColumn width="120" label="상태">{{ getStatus(row) }}</GridTableColumn>
             <GridTableColumn width="50" label="">
               <b-button variant="ghost" class="p-0" @click="$router.push(`/admin/project/article/${row.sq}`)">
-                <img class="w-20" src="/admin/img/edit-pencil.svg" alt="수정">
+                <img class="w-20" src="/admin_image/edit-pencil.svg" alt="수정">
               </b-button>
             </GridTableColumn>
           </template>

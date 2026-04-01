@@ -163,34 +163,34 @@ const checkGrammar = async () => {
       <div v-if="editor" class="controller" :class="{ hidden: !control }" @mouseover="isOver=true" @mouseleave="isOver=false" ref="controller">
         <nav>
           <a class="btn" @click="checkGrammar">
-            <img alt="" src="/admin/img/module/text-control-ai.svg">
+            <img alt="" src="/admin_image/module/text-control-ai.svg">
           </a>
           <a class="btn" v-if="bold || all" :class="{ 'is-active': editor.isActive('bold') }" @click="editor.chain().focus().toggleBold().run();">
-            <img alt="" src="/admin/img/module/text-control-bold.png">
+            <img alt="" src="/admin_image/module/text-control-bold.png">
           </a>
           <a class="btn" v-if="link || all" :class="{ 'is-active': editor.isActive('link') }" @click="openLink">
-            <img alt="" src="/admin/img/module/text-control-link.png">
+            <img alt="" src="/admin_image/module/text-control-link.png">
           </a>
           <div v-if="color || all" class="color-pick">
             <input type="color" @input="editor.chain().focus().setColor(($event.target as HTMLInputElement).value).run()" :value="editor.getAttributes('textStyle')?.color || '#111111'">
           </div>
           <a class="btn" v-if="all" :class="{ 'is-active': editor.isActive('italic') }" @click="editor.chain().focus().toggleItalic().run()">
-            <img alt="" src="/admin/img/module/text-control-italic.png">
+            <img alt="" src="/admin_image/module/text-control-italic.png">
           </a>
           <a class="btn" v-if="align || all" :class="{ 'is-active': editor.isActive({textAlign: 'center'}) }" @click="editor.chain().focus().setTextAlign('center').run()">
-            <img alt="" src="/admin/img/module/text-control-center.png">
+            <img alt="" src="/admin_image/module/text-control-center.png">
           </a>
           <a class="btn" v-if="align || all" :class="{ 'is-active': editor.isActive({textAlign: 'left'}) }" @click="editor.chain().focus().setTextAlign('left').run()">
-            <img alt="" src="/admin/img/module/text-control-left.png">
+            <img alt="" src="/admin_image/module/text-control-left.png">
           </a>
           <a class="btn" v-if="align || all" :class="{ 'is-active': editor.isActive({textAlign: 'right'}) }" @click="editor.chain().focus().setTextAlign('right').run()">
-            <img alt="" src="/admin/img/module/text-control-right.png">
+            <img alt="" src="/admin_image/module/text-control-right.png">
           </a>
           <a class="btn" v-if="remark || all" :class="{ 'is-active': editor.isActive('superscript') }" @click="editor.chain().focus().toggleSuperscript().run()">
-            <img alt="" src="/admin/img/module/text-control-superscript.png">
+            <img alt="" src="/admin_image/module/text-control-superscript.png">
           </a>
           <a class="btn" v-if="remark || all" :class="{ 'is-active': editor.isActive('subscript') }" @click="editor.chain().focus().toggleSubscript().run()">
-            <img alt="" src="/admin/img/module/text-control-subscript.png">
+            <img alt="" src="/admin_image/module/text-control-subscript.png">
           </a>
         </nav>
       </div>

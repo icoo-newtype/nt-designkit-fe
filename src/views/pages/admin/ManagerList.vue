@@ -141,7 +141,7 @@ getList();
               <GridTableColumn width="250" label="상태">{{ managerStatus(row) }}</GridTableColumn>
               <GridTableColumn width="80" label="">
                 <b-button variant="ghost" class="p-0" @click="modify(row)">
-                  <img class="w-20" src="/admin/img/edit-pencil.svg" alt="">
+                  <img class="w-20" src="/admin_image/edit-pencil.svg" alt="">
                 </b-button>
               </GridTableColumn>
             </template>

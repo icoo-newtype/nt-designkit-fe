@@ -223,7 +223,7 @@ watch(show, v => {
               <p v-else>미리보기가 지원되지 않는 파일입니다</p>
             </template>
             <div class="w-100" style="color: #666" v-else>
-              <img src="/admin/img/module/img.svg" alt="">
+              <img src="/admin_image/module/img.svg" alt="">
               <p class="mt-2">Drag Here!</p>
             </div>
           </template>

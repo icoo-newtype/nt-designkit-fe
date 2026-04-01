@@ -28,7 +28,7 @@ const change = async () => {
 <template>
   <article password>
     <BForm class="w-700" ref="validator">
-      <h1 class="tc mb-0"><img src="/admin/img/logo.png" alt="logo"></h1>
+      <h1 class="tc mb-0"><img src="/admin_image/logo.png" alt="logo"></h1>
       <h2 class="tc">비밀번호를 변경해 주세요!</h2>
       <b-card class="mt-40">
         <b-form-group :label-cols="4" horizontal label="현재 비밀번호" label-for="pwd">

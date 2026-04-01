@@ -36,7 +36,7 @@ const loginAction = async () => {
           <b-card-group>
             <b-card-body>
               <b-form ref="validator">
-                <h1 class="tc mb-2"><img src="/admin/img/logo.png" alt=""></h1>
+                <h1 class="tc mb-2"><img src="/admin_image/logo.png" alt=""></h1>
                 <p class="text-muted tc mb-15">관리자 계정을 입력해주세요.</p>
                 <b-input-group class="mb-2">
                   <b-input-group-prepend>

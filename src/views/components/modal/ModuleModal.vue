@@ -107,7 +107,7 @@ watch(() => colorCol2title.value, () => {
               <p class="title">1 Column</p>
             </div>
             <div class="view media">
-              <div class="img"><img src="/admin/img/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
             </div>
           </b-card>
           <b-card @click="resolve({ name:'2 Column', comp: 'Media', type: mediaCol2type, value: [{media: '', caption: ''},{media: '', caption: ''}] })">
@@ -116,8 +116,8 @@ watch(() => colorCol2title.value, () => {
               <RadioButton v-model="mediaCol2type" :obj="{ 'basic':'Basic', 'incorrect':'Incorrect Usage', 'correct':'Correct Usage' }"/>
             </div>
             <div class="view media">
-              <div class="img"><img src="/admin/img/module/img.svg" alt=""></div>
-              <div class="img"><img src="/admin/img/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
             </div>
           </b-card>
           <b-card @click="resolve({ name:'3 Column', comp: 'Media', type: mediaCol3type, value: [{media: '', caption: ''},{media: '', caption: ''},{media: '', caption: ''}] })">
@@ -126,9 +126,9 @@ watch(() => colorCol2title.value, () => {
               <RadioButton v-model="mediaCol3type" :obj="{ 'basic':'Basic', 'incorrect':'Incorrect Usage', 'correct':'Correct Usage' }"/>
             </div>
             <div class="view media">
-              <div class="img"><img src="/admin/img/module/img.svg" alt=""></div>
-              <div class="img"><img src="/admin/img/module/img.svg" alt=""></div>
-              <div class="img"><img src="/admin/img/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
             </div>
           </b-card>
         </template>
@@ -138,12 +138,12 @@ watch(() => colorCol2title.value, () => {
               <p class="title">Slider</p>
             </div>
             <div class="view slider">
-              <div class="box"><img src="/admin/img/module/img.svg" alt=""></div>
-              <div class="box"><img src="/admin/img/module/img.svg" alt=""></div>
-              <div class="box"><img src="/admin/img/module/img.svg" alt=""></div>
-              <div class="box"><img src="/admin/img/module/img.svg" alt=""></div>
-              <div class="box"><img src="/admin/img/module/img.svg" alt=""></div>
-              <div class="box"><img src="/admin/img/module/img.svg" alt=""></div>
+              <div class="box"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="box"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="box"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="box"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="box"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="box"><img src="/admin_image/module/img.svg" alt=""></div>
             </div>
           </b-card>
         </template>

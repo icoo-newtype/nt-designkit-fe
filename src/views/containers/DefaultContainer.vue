@@ -18,7 +18,7 @@ const logout = () => {
   <div v-cloak class="nt-app">
     <div class="app-header">
       <router-link to="/admin/" class="logo">
-        <img alt="logo" src="/admin/img/logo-l.png">
+        <img alt="logo" src="/admin_image/logo-l.png">
       </router-link>
       <Breadcrumb/>
       <div class="account-info">

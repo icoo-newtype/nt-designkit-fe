@@ -29,8 +29,8 @@ watchEffect(() => data.value = props.modelValue || []);
         <div class="inner">
           <p>{{ data.name }}</p>
           <span></span>
-          <button @click="$emit('copy')"><img src="/admin/img/copy-paste-icon.png" alt=""></button>
-          <button class="delete" @click="remove"><img src="/admin/img/trash-icon.png" alt=""></button>
+          <button @click="$emit('copy')"><img src="/admin_image/copy-paste-icon.png" alt=""></button>
+          <button class="delete" @click="remove"><img src="/admin_image/trash-icon.png" alt=""></button>
         </div>
       </div>
     </div>
