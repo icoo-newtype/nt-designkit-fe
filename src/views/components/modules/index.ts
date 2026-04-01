@@ -1,0 +1,16 @@
+import BasicText from './BasicText.vue';
+import Blank from './Blank.vue';
+import ColorPalette from './ColorPalette.vue';
+import DoubleImage from './DoubleImage.vue';
+import Download from './Download.vue';
+import FeBlank from './FeBlank.vue';
+import FeColorPalette from './FeColorPalette.vue';
+import FeDownload from './FeDownload.vue';
+import FeMedia from './FeMedia.vue';
+import FeSlider from './FeSlider.vue';
+import FeTitleText from './FeTitleText.vue';
+import Media from './Media.vue';
+import ModuleGroup from './ModuleGroup.vue';
+import Slider from './Slider.vue';
+import TitleText from './TitleText.vue';
+export const getComponentsMap = (): Record<string, any> => ({ BasicText, Blank, ColorPalette, DoubleImage, Download, FeBlank, FeColorPalette, FeDownload, FeMedia, FeSlider, FeTitleText, Media, ModuleGroup, Slider, TitleText });
