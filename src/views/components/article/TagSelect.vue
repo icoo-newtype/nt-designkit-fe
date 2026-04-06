@@ -62,7 +62,7 @@ onMounted(() => {
 [tag-select] { .p(12,16,8); background: #F7F7F7;
   ul { .m; .ib;
     li { .vat; .rel; .ib; background: #dcdce1; .fs(12, 18); .p(3,32,3,12); .br(15); .mr(4); .mb(4); cursor: move;
-      a { .block; .abs; .rt(6,4); .wh(16); .contain('/admin/img/tag-x.png'); }
+      a { .block; .abs; .rt(6,4); .wh(16); .contain('/admin_image/tag-x.png'); }
     }
   }
   .tag-input { background: #F7F7F7; border: 0; color:#555; outline: 0; .fs(14,24); .ml(12); }

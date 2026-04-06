@@ -13,6 +13,6 @@ export const useState = defineStore('stateInfo', () => {
     setCookie('admin-lang', v);
     location.href = '/admin/';
   });
-  const host = computed(() => `${import.meta.env.VITE_APP_HOST}${lang.value === 'ko' ? '' : '/' + lang.value}`);
+  const host = computed(() => import.meta.env.VITE_APP_HOST);
   return { lang, langList, language, afterLogin, host };
 });

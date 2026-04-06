@@ -48,11 +48,11 @@ const model = computed({
         span {.fs(12); color: #898989;}
         &.message {.fs(22); color: #cfcfcf;}
       }
-      i {.wh(40, 40); .bg('/admin/img/common/plus-circle.png'); .contain; .block; .m(0, auto, 12); transition: all .3s ease;}
+      i {.wh(40, 40); .bg('/admin_image/common/plus-circle.png'); .contain; .block; .m(0, auto, 12); transition: all .3s ease;}
     }
     &:hover {
       .plus {
-        i {.bg('/admin/img/common/plus-circle-hover.png');}
+        i {.bg('/admin_image/common/plus-circle-hover.png');}
       }
     }
   }

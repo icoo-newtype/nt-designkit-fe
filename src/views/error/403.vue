@@ -15,7 +15,7 @@
 
 [error] { .rel; .h(100vh); .flex; .flex-column; .justify-center; .items-center; .tc; .ph(16);
   header { .fix; .lt;
-    a.logo { .block; .wh(132,20); .abs; .lt(24, 24); .contain('/admin/img/logo.svg'); z-index: 2; }
+    a.logo { .block; .wh(132,20); .abs; .lt(24, 24); .contain('/admin_image/logo.svg'); z-index: 2; }
   }
   h2 { .fs(36,1); .bold; }
   h2 + p { .mt(24); .fs(14,1.6); }

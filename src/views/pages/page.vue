@@ -49,10 +49,6 @@ watch(() => route.hash, async (hash) => {
   const elements = document.querySelectorAll('article [fe-title-text].title');
   const target = Array.from(elements).find(el => {
     const h2 = el.querySelector('h2');
-    console.log('-----------------');
-    console.log(title);
-    console.log(h2?.textContent?.trim());
-    console.log(h2?.textContent?.trim() === title);
 
     return normalize(h2?.textContent as string) === normalize(title);
   });

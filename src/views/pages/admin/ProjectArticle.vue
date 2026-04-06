@@ -22,7 +22,7 @@ const apiData = reactive<Partial<PageItem>>({});
 const article = ref<ModuleItem[]>([]);
 
 const slug = computed(() => currentRoute.value.params.slug);
-const code = computed(() => currentRoute.value.params.code);
+const code = computed(() => currentRoute.value.params.code as string);
 provide('slug', slug.value);
 
 const confirm = useConfirm();
@@ -58,7 +58,7 @@ const save = async () => {
 };
 
 const preview = () => {
-  // window.open(`${state.host}/projects/${apiData.slug}`);
+  window.open(`${state.host}/${slug.value}/${code.value.replace('-', '/')}`);
 };
 
 const getData = async () => {
@@ -69,7 +69,7 @@ const getData = async () => {
   loading.value = false;
 };
 
-provide('filekey', slug.value);
+provide('filekey', 'PROJ');
 getData();
 
 const subTitles = computed(() => article.value.filter(item => item.type === 'title'));
@@ -82,7 +82,7 @@ watch(() => article.value, () => {
 <template>
   <div project-article class="article animated fadeIn" v-if="!loading">
     <div class="util-wrap">
-      <b-button size="sm" variant="outline" @click="$router.push(`/admin/project/list`)">취소</b-button>
+      <b-button size="sm" variant="outline" @click="router.push(`/admin/project/article/${apiData.projSq}`)">취소</b-button>
       <b-button size="sm" variant="outline" @click="preview">미리보기</b-button>
       <b-button size="sm" variant="primary" @click="save">저장</b-button>
     </div>

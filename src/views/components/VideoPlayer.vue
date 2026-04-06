@@ -77,17 +77,17 @@ onMounted(() => {
   .control { .abs; .wh(40, 40); background-color: transparent; .cover; .bg-c; .no-repeat; z-index: 6; }
   .video-control-btn { .rb(20, 20); }
   .video-mute-btn { .rb(74, 20); }
-  .video-control-btn { .bg('/admin/img/common/video-pause.png');
-    &:hover { .bg('/admin/img/common/video-pause-hover.png');}
+  .video-control-btn { .bg('/admin_image/common/video-pause.png');
+    &:hover { .bg('/admin_image/common/video-pause-hover.png');}
   }
-  .video-control-btn-stop { .bg('/admin/img/common/video-play.png');
-    &:hover {.bg('/admin/img/common/video-play-hover.png');}
+  .video-control-btn-stop { .bg('/admin_image/common/video-play.png');
+    &:hover {.bg('/admin_image/common/video-play-hover.png');}
   }
-  .video-mute-btn { .bg('/admin/img/common/video-mute.png');
-    &:hover {.bg('/admin/img/common/video-mute-hover.png');}
+  .video-mute-btn { .bg('/admin_image/common/video-mute.png');
+    &:hover {.bg('/admin_image/common/video-mute-hover.png');}
   }
-  .video-mute { .bg('/admin/img/common/video-sound.png');
-    &:hover {.bg('/admin/img/common/video-sound-hover.png');}
+  .video-mute { .bg('/admin_image/common/video-sound.png');
+    &:hover {.bg('/admin_image/common/video-sound-hover.png');}
   }
 }
 </style>
