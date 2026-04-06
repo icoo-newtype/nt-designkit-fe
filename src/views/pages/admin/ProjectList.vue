@@ -44,7 +44,7 @@ const changePage = (v: number) => {
 };
 
 const getStatus = (el: ProjectItem) => {
-  return el.access !== 1 ? '비공개' : '전체공개';
+  return el.access !== 'Y' ? '비공개' : '공개';
 };
 
 getList();
@@ -57,8 +57,8 @@ getList();
         <h1>Project list</h1>
         <b-row class="justify-content-between mb-50">
           <b-col cols="8" class="d-flex">
-            <FilterDropSelect v-model="listParam" :list="['aaa','bbb']" class="w-150 mr-2" placeholder="모든 타입" prop="type" @change="changePage(1)"/>
-            <FilterDropSelect v-model="listParam" :list="['111','222']" class="w-150 mr-2" placeholder="모든 상태" prop="type" @change="changePage(1)"/>
+            <FilterDropSelect v-model="listParam" :list="['Essential','Professional','Enterprise']" class="w-150 mr-2" placeholder="모든 타입" prop="type" @change="changePage(1)"/>
+            <FilterDropSelect v-model="listParam" :list="[{label: '공개', value: 'Y'},{label: '비공개', value: 'N'}]" class="w-150 mr-2" placeholder="모든 상태" prop="access" @change="changePage(1)"/>
           </b-col>
           <b-col cols="4">
             <SearchBlock v-model="listParam" @change="changePage(1)" v-if="false"/>
