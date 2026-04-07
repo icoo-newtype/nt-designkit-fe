@@ -11,8 +11,8 @@ const emit = defineEmits(['update:modelValue']);
 
 const data = ref();
 const name = ref('');
-const id = ref(['blank-20', 'blank-40', 'blank-60', 'blank-100', 'blank-120']);
-const blankList = ref(['20px', '40px', '60px', '100px', '120px']);
+const id = ref(['blank-S', 'blank-M', 'blank-L']);
+const blankList = ref(['20px', '140px', '240px']);
 
 const change = () => {
   emit('update:modelValue', data.value);
@@ -26,7 +26,7 @@ function blankSelect(i: number) {
 }
 
 watchEffect(() => {
-  data.value = props.modelValue ?? { id: 'blank-40', index: 1 };
+  data.value = props.modelValue ?? { id: 'blank-M', index: 1 };
   name.value = blankList.value[data.value.index];
   emit('update:modelValue', data.value);
 });

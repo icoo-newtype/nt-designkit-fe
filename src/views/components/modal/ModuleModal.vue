@@ -131,6 +131,20 @@ watch(() => colorCol2title.value, () => {
               <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
             </div>
           </b-card>
+          <b-card @click="resolve({ name:'3 Column', comp: 'Media', type: mediaCol3type, value: [{media: '', caption: ''},{media: '', caption: ''},{media: '', caption: ''},{media: '', caption: ''},{media: '', caption: ''},{media: '', caption: ''}] })">
+            <div class="text">
+              <p class="title">3 Column</p>
+              <RadioButton v-model="mediaCol3type" :obj="{ 'basic':'Basic', 'incorrect':'Incorrect Usage', 'correct':'Correct Usage' }"/>
+            </div>
+            <div class="view media row-2">
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+            </div>
+          </b-card>
         </template>
         <template v-if="selected.active === 'Slider'">
           <b-card @click="resolve({ name:'Slider', comp: 'Slider', type:'slider', value: null })">
@@ -274,6 +288,10 @@ watch(() => colorCol2title.value, () => {
           &.media { .flex-center; .min-h(200); .p(20);
             .img { .br(5); .flex-center; .bgc(#F4F4F4); .w(30%); .min-h(200) }
             .img + .img { .ml(10); }
+            &.row-2 { .grid(3, 10);
+              .img { .wf; }
+              .img + .img { .ml(0); }
+            }
           }
           &.color { .ph(52);
             p { .fs(16); .semi-bold; }

@@ -137,6 +137,7 @@ if (sq.value) getData();
           </BFormGroup>
           <BFormGroup horizontal label="OG 이미지" class="combine">
             <ImageSelect :filekey="apiData.slug as string" v-model="apiData.ogImage"/>
+            <p class="description">권장 이미지 크기 800x420 | 용량 2MB</p>
           </BFormGroup>
           <BFormGroup horizontal label="리소스" class="combine">
             <div class="resource-list">

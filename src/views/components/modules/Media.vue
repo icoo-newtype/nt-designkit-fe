@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import ImageSelect from '@/views/components/form/ImageSelect.vue';
 import { inject, ref, watchEffect } from 'vue';
 import MediaSelect from '@/views/components/form/MediaSelect.vue';
 import TextInput from '@/views/components/form/TextInput.vue';
@@ -23,7 +22,7 @@ watchEffect(() => {
 
 <template>
   <div media :class="type">
-    <div class="list" :class="`column-${data.length}`">
+    <div class="list" :class="`column-${((data.length - 1) % 3) + 1}`">
       <div class="col" v-for="(item, i) in data" :key="i">
         <div class="view">
           <media-select required :filekey="filekey" v-model="data[i].media" message="권장 비율 (16:9)"/>

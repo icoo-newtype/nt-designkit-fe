@@ -14,7 +14,7 @@ const data = computed(() => props.info.value);
 </script>
 <template>
   <div fe-media :class="info.type">
-    <ul :class="`column-${data.length}`">
+    <ul :class="`column-${((data.length - 1) % 3) + 1}`">
       <li v-for="(row, i) in data" :key="i">
         <div class="view">
           <cdn-img :src="row.media" v-if="getMediaTypeFromPath(row.media) === 'image'"/>
