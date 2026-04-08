@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="qa적용">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/DrawerMenuItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/DrawerMenuItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeColorPalette.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/FeColorPalette.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/pages/page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/page.vue" afterDir="false" />
     </list>
@@ -136,7 +140,7 @@
       <workItem from="1773990732913" duration="68646000" />
       <workItem from="1774851942294" duration="48400000" />
       <workItem from="1775452282990" duration="65000" />
-      <workItem from="1775455943510" duration="21183000" />
+      <workItem from="1775455943510" duration="26714000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -266,7 +270,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775633705906</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775634073350</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1775634073350</updated>
+    </task>
+    <task id="LOCAL-00018" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775639086590</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1775639086590</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,4 +1,5 @@
 import { forEach, isString } from 'lodash-es';
+import { onActivated, onDeactivated, onMounted, onUnmounted } from 'vue';
 
 export const setCookie = (name: string, value: string) => {
   const expire = new Date();
@@ -71,4 +72,20 @@ export const getMediaTypeFromPath = (path: string): 'image' | 'video' | 'audio' 
 export const enterToBr = (cont: string): string => {
   if (!cont || !isString(cont)) return '';
   return cont.replace(/[\r\n]/g, '<br>').replace(/(\s{2,})/g, (match, space) => space.replace(/\s/g, '&nbsp;'));
+};
+
+export const normalizeString = (str: string) => str?.replace(/\s+/g, ' ').trim();
+
+export const useWindowEvent = (event: string, handler: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => {
+  let deactivated = false;
+  onMounted(() => window.addEventListener(event, handler, options));
+  onUnmounted(() => window.removeEventListener(event, handler));
+  onActivated(() => {
+    if (deactivated) window.addEventListener(event, handler, options);
+    deactivated = false;
+  });
+  onDeactivated(() => {
+    deactivated = true;
+    window.removeEventListener(event, handler);
+  });
 };

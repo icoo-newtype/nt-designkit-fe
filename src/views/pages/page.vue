@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, useHost, watch, watchEffect } from 'vue';
+import { computed, nextTick, provide, ref, watch, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useLoginPageStore } from '@/store/auth';
 import PasswordGuard from '@/views/components/PasswordGuard.vue';
@@ -10,6 +10,7 @@ import { usePage } from '@/store/page';
 import { getComponentsMap } from '@/views/components/modules';
 import { useSocialHead } from '@/utils/meta';
 import { useState } from '@/store/state';
+import { normalizeString, useWindowEvent } from '@/utils';
 
 const route = useRoute();
 const state = useState();
@@ -17,6 +18,9 @@ const loginStore = useLoginPageStore();
 const browserStore = useBrowserStore();
 const pageStore = usePage();
 const componentsMap = getComponentsMap();
+const activeAnchor = ref('');
+
+provide('activeAnchor', activeAnchor);
 
 const project = computed(() => route.params.project as string);
 const category = computed(() => route.params.category as string);
@@ -37,7 +41,6 @@ watchEffect(() => {
   }
 });
 
-const normalize = (str: string) => str?.replace(/\s+/g, ' ').trim();
 watch(() => route.hash, async (hash) => {
   if (!hash) return;
   const title = decodeURIComponent(hash.replace('#', ''));
@@ -54,7 +57,7 @@ watch(() => route.hash, async (hash) => {
   const target = Array.from(elements).find(el => {
     const h2 = el.querySelector('p.title');
 
-    return normalize(h2?.textContent as string) === normalize(title);
+    return normalizeString(h2?.textContent as string) === normalizeString(title);
   });
   if (!target) return;
 
@@ -71,6 +74,27 @@ const resourceList = computed(() => {
     return [];
   }
 });
+
+const scrolled = () => {
+  const anchors = document.querySelectorAll('article [fe-title-text].title p.title');
+
+  let topAnchor: Element | null = null;
+  let topY = Infinity;
+
+  anchors.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= window.innerHeight && rect.bottom >= 0 && rect.top < topY) {
+      topY = rect.top;
+      topAnchor = el;
+    }
+  });
+
+  if (topAnchor && (topAnchor as HTMLElement).textContent) {
+    activeAnchor.value = normalizeString((topAnchor as HTMLElement).textContent!);
+  }
+};
+
+useWindowEvent('scroll', scrolled);
 </script>
 
 <template>

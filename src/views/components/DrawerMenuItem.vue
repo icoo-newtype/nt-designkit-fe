@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, inject, provide, Ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { PageItem, usePage } from '@/store/page';
 import { ModalItem } from '@/plugins/modal/types';
 import { ModuleItem } from '@/types/components';
+import { normalizeString } from '@/utils';
 
 const props = defineProps<{ item: PageItem; depth?: number }>();
 const depth = props.depth ?? 0;
@@ -22,11 +23,15 @@ const open = computed(() =>
 
 const active = computed(() => open.value || route.params.page === pageCode.value);
 
-// 임시 article 데이터 (추후 props.item.article에서 파싱)
-const articleList = computed<ModuleItem[]>(() => {
+
+const articleList = computed(() => {
   if (depth < 1) return [];
-  // return ['page1', 'page2', 'page3']; // 임시
-  return JSON.parse(decodeURIComponent(atob(props.item?.article as string))).filter((item: ModuleItem) => item.type === 'title');
+  return JSON.parse(decodeURIComponent(atob(props.item?.article as string)))
+      .filter((item: ModuleItem) => item.type === 'title')
+      .map((item: ModuleItem) => ({
+        name: item.name,
+        title: (item.value as Record<string, string>)?.title ?? ''
+      }));
 });
 
 function navigate() {
@@ -42,6 +47,8 @@ function navigate() {
 function scrollToTitle(title: string) {
   router.push({ ...route, hash: `#${title}` });
 }
+
+const activeAnchor = inject<Ref<string>>('activeAnchor');
 </script>
 
 <template>
@@ -53,10 +60,11 @@ function scrollToTitle(title: string) {
       </ul>
     </template>
 
-    <!-- article 목록 (depth >= 1인 페이지 아이템에만 표시) -->
     <ol v-if="depth >= 1 && active && articleList.length">
       <li v-for="row in articleList" :key="row.name">
-        <a href="#" @click.prevent="scrollToTitle(row.value?.title as string)">{{ row.value?.title }}</a>
+        <a href="#" @click.prevent="scrollToTitle(row.title)" :class="{ 'on': activeAnchor === normalizeString(row.title) }">
+          {{ row.title }}
+        </a>
       </li>
     </ol>
   </li>

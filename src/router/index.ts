@@ -15,8 +15,13 @@ import { PageResponse, usePage } from '@/store/page';
 const router = createRouter({
   history: createWebHistory(),
   scrollBehavior(to, from, savedPosition) {
-    // 항상 맨 위로 스크롤
-    return { top: 0 };
+    if (to.hash) {
+      return false;
+    }
+
+    if (to.path !== from.path) {
+      return { top: 0 };
+    }
   },
   routes: [
     {
