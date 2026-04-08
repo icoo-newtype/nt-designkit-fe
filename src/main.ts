@@ -10,9 +10,12 @@ import { useAuthInfo, UserInfo } from '@/store/auth';
 import { getCookie } from '@/utils';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useBrowserStore } from '@/store/browser.store';
+import { createHead } from '@vueuse/head';
 
 const app = createApp(App)
   .use(createPinia());
+
+const head = createHead();
 
 const init = () => {
   const browserStore = useBrowserStore();
@@ -20,6 +23,7 @@ const init = () => {
 
   app
     .use(router)
+    .use(head)
     .use(modalPlugin)
     .use(toastPlugin, { type: 'success', duration: 2000 }).mount('#app');
 

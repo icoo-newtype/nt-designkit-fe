@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch, watchEffect } from 'vue';
+import { computed, nextTick, useHost, watch, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useLoginPageStore } from '@/store/auth';
 import PasswordGuard from '@/views/components/PasswordGuard.vue';
@@ -7,11 +7,12 @@ import { useBrowserStore } from '@/store/browser.store';
 import AppHeader from '@/views/layout/AppHeader.vue';
 import AppFooter from '@/views/layout/AppFooter.vue';
 import { usePage } from '@/store/page';
-import CdnImg from '@/views/components/CdnImg.vue';
 import { getComponentsMap } from '@/views/components/modules';
-import { ModalItem } from '@/plugins/modal/types';
+import { useSocialHead } from '@/utils/meta';
+import { useState } from '@/store/state';
 
 const route = useRoute();
+const state = useState();
 const loginStore = useLoginPageStore();
 const browserStore = useBrowserStore();
 const pageStore = usePage();
@@ -24,7 +25,10 @@ const isLogin = computed(() => loginStore.isLogin(project.value));
 
 const article = computed(() => JSON.parse(decodeURIComponent(atob(pageStore.current?.article as string))));
 
-console.log(article.value);
+useSocialHead({
+  title: pageStore.info?.title,
+  image: `${state.host}/${pageStore.info?.ogImage}`,
+});
 
 // route 변경 시 현재 페이지 동기화
 watchEffect(() => {
