@@ -79,4 +79,12 @@ const hasText = (text: string): boolean => {
     }
   }
 }
+
+@media (@ds-up) {
+  [fe-title-text] {
+    &.title {
+      &:before { .l(0); .r(0); }
+    }
+  }
+}
 </style>

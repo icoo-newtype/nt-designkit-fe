@@ -118,7 +118,7 @@ ul, ol, dl { .m; }
 
 @media (@tl-up) {
   [project-page] {
-    article { .mt(70); .ml(300);
+    article { .mt(70); .ml(240);
 
     }
   }
@@ -126,9 +126,18 @@ ul, ol, dl { .m; }
 
 @media (@ds-up) {
   [project-page] {
-    article {
+    article { .ml(300);
       .content { .pb(200);
-        > div { .ph(70); }
+      }
+    }
+  }
+}
+
+@media (@dm-up) {
+  [project-page] {
+    article {
+      .content {
+        > div:not([fe-slider]) { .ph(0); .w(1160); .mh-c; }
       }
     }
   }
