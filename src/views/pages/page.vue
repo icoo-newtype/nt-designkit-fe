@@ -100,7 +100,7 @@ ul, ol, dl { .m; }
 
 [project-page] {
   article { .rel; .mt(60);
-    .content { .wf; .crop;
+    .content { .wf; .crop; .pb(120);
       > div { .ph(20); }
     }
   }
@@ -109,7 +109,9 @@ ul, ol, dl { .m; }
 @media (@tp-up) {
   [project-page] {
     article {
-      .content > div { .ph(30); }
+      .content { .pb(140);
+        > div { .ph(30); }
+      }
     }
   }
 }
@@ -125,7 +127,9 @@ ul, ol, dl { .m; }
 @media (@ds-up) {
   [project-page] {
     article {
-      .content > div { .ph(70); }
+      .content { .pb(200);
+        > div { .ph(70); }
+      }
     }
   }
 }

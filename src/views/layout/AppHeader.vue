@@ -123,7 +123,7 @@ watch(() => route.hash, async (hash) => {
       .logo { .h(70); .p(20, 24); }
       .btn-hamburger { .hide; }
     }
-    .drawer { .rel; .h(calc(100vh - 70px)); .w(300); .-r(#E8EAED);
+    .drawer { .rel; .h(calc(100vh - 70px)); .w(240); .-r(#E8EAED);
       .drawer-holder { .rel; .f; .t-x(0);
         .drawer-menu { .p(0);
           > ul > li > a { .ph(24);
@@ -139,6 +139,7 @@ watch(() => route.hash, async (hash) => {
       &.roll { pointer-events: all;
         header { .t-y(0); }
       }
+      .drawer { .w(300); }
     }
   }
 }
