@@ -76,22 +76,20 @@ const resourceList = computed(() => {
 });
 
 const scrolled = () => {
-  const anchors = document.querySelectorAll('article [fe-title-text].title p.title');
+  const anchors = document.querySelectorAll('article [fe-title-text].title');
 
-  let topAnchor: Element | null = null;
-  let topY = Infinity;
+  let currentAnchor: Element | null = null;
 
   anchors.forEach(el => {
     const rect = el.getBoundingClientRect();
-    if (rect.top <= window.innerHeight && rect.bottom >= 0 && rect.top < topY) {
-      topY = rect.top;
-      topAnchor = el;
+    if (rect.top <= 100) {
+      currentAnchor = el; // 100px 안에 들어온 것 중 가장 마지막(아래) 것
     }
   });
 
-  if (topAnchor && (topAnchor as HTMLElement).textContent) {
-    activeAnchor.value = normalizeString((topAnchor as HTMLElement).textContent!);
-  }
+  activeAnchor.value = currentAnchor
+      ? normalizeString((currentAnchor as HTMLElement).textContent!)
+      : '';
 };
 
 useWindowEvent('scroll', scrolled);
