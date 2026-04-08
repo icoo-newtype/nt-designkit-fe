@@ -48,7 +48,7 @@ watch(() => route.hash, async (hash) => {
   // title과 매칭되는 DOM 요소 찾기
   const elements = document.querySelectorAll('article [fe-title-text].title');
   const target = Array.from(elements).find(el => {
-    const h2 = el.querySelector('h2');
+    const h2 = el.querySelector('p.title');
 
     return normalize(h2?.textContent as string) === normalize(title);
   });
