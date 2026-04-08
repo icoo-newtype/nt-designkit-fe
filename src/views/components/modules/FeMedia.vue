@@ -31,10 +31,13 @@ const data = computed(() => props.info.value);
 @import '~@/less/proj.less';
 
 [fe-media] {
-  img { .max-w(100%); .wf; .br(10); }
-  video { .br(10); }
+  img { .max-w(100%); .wf; }
   li { .p(10, 0);
     .caption { .m(8, 0, 10); .fs(14, 1.4); .c(#666); }
+  }
+
+  &.basic {
+    img, video { .br(10); }
   }
 
   &.incorrect, &.correct {
