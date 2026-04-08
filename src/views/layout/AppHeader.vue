@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref, watch, watchEffect } from 'vue';
+import { computed, nextTick, ref, watch, watchEffect } from 'vue';
 import { useBrowserStore } from '@/store/browser.store';
 import CdnImg from '@/views/components/CdnImg.vue';
 import { usePage } from '@/store/page';
@@ -25,6 +25,23 @@ const route = useRoute();
 watch(() => route.fullPath, () => {
   menuOpen.value = false;
 });
+
+const normalize = (str: string) => str?.replace(/\s+/g, ' ').trim();
+watch(() => route.hash, async (hash) => {
+  if (!hash) return;
+  const title = decodeURIComponent(hash.replace('#', ''));
+  await nextTick();
+  await nextTick();
+  const elements = Array.from(document.querySelectorAll('[app-header] ol a'));
+  elements.forEach(el => el.classList.remove('on'));
+  const target = elements.find(el => {
+    el.classList.remove('on');
+    return normalize(el?.textContent as string) === normalize(title);
+  });
+  if (!target) return;
+
+  target.classList.add('on');
+}, { immediate: true });
 </script>
 
 <template>
@@ -89,6 +106,7 @@ watch(() => route.fullPath, () => {
           }
           ol a { .ph(12); .c(#666);
             &:after { .hide; }
+            &.on { .bgc(#F3F4F6); .br(4); }
           }
         }
       }

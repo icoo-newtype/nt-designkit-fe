@@ -27,7 +27,7 @@ const hasText = (text: string): boolean => {
     .title + div { .mt(100); .fs(18, 1.5); .medium; }
   }
   &.title { .rel; .pt(20); .pb(60);
-    &:before { .cnt; .abs; .t; .l(20); .r(20); .m(auto); .h(1); .bgc(#E8EAED); }
+    &:before { .cnt; .abs; .t(-1); .l(20); .r(20); .m(auto); .h(1); .bgc(#E8EAED); }
     .title { .fs(28, 1.3); }
     .title + div { .mt(30); }
   }
