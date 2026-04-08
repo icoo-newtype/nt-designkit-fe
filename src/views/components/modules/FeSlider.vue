@@ -27,7 +27,7 @@ const doubled = computed(() => [...data.value, ...data.value]);
 <style lang="less">
 @import '~@/less/proj.less';
 
-[fe-slider] {
+[fe-slider] { .pb(120);
   overflow: hidden;
 
   ul {
@@ -48,5 +48,9 @@ const doubled = computed(() => [...data.value, ...data.value]);
 @keyframes slide-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(calc(-50% - 10px)); }
+}
+
+@media (@ds-up) {
+  [fe-slider] { .pb(160); }
 }
 </style>

@@ -31,7 +31,8 @@ const data = computed(() => props.info.value);
 @import '~@/less/proj.less';
 
 [fe-media] {
-  img { .max-w(100%); .wf; }
+  img { .max-w(100%); .wf; .br(10); }
+  video { .br(10); }
   li { .p(10, 0);
     .caption { .m(8, 0, 10); .fs(14, 1.4); .c(#666); }
   }
@@ -69,7 +70,9 @@ const data = computed(() => props.info.value);
 
 @media (@dm-up) {
   [fe-media] {
-    //&.basic .column-1 img { .w(auto); }
+    li {
+      .caption { .mt(12); }
+    }
     ul {
       &.column-3 { .grid(3); grid-column-gap: 20px; }
     }

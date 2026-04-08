@@ -62,7 +62,7 @@ watch(() => route.fullPath, () => {
     header { .t-y(0); }
   }
 
-  header { .rel; .bgc(rgba(255, 255, 255, 0.4)); backdrop-filter: blur(10px); .wf; .h(60); .t-y(0); transition: transform 0.6s ease; z-index: 2;
+  header { .rel; .bgc(#fff); .wf; .h(60); .t-y(0); transition: transform 0.6s ease; z-index: 2;
     .logo { .rel; .wh(100%, 60); .p(15, 20); .-b(#E8EAED); .z(4);
       a { .block; }
       img { .block; .h(30); }

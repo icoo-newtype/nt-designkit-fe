@@ -23,7 +23,7 @@ const download = (url: string) => {
 @import '~@/less/proj.less';
 
 [fe-download] { .mb(40);
-  .btn { .rel; .pr(40);
+  .btn { .rel; .pr(34);
     &:after { .cnt; .abs; .rt(12, 50%); .t-yc; .wh(16); .contain('/image/common/ico-download-w.svg'); }
   }
 }
