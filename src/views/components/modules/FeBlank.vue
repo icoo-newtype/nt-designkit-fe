@@ -24,11 +24,15 @@ defineProps<{
 }
 
 @media (@tp-up) {
-  &.blank-M { .h(100); }
-  &.blank-L { .h(160); }
+  [fe-blank] {
+    &.blank-M { .h(100); }
+    &.blank-L { .h(160); }
+  }
 }
 @media (@dm-up) {
-  &.blank-M { .h(140); }
-  &.blank-L { .h(240); }
+  [fe-blank] {
+    &.blank-M { .h(140); }
+    &.blank-L { .h(240); }
+  }
 }
 </style>
