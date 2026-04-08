@@ -2,7 +2,6 @@
 
 import { inject, ref, watchEffect } from 'vue';
 import MediaSelect from '@/views/components/form/MediaSelect.vue';
-import TextInput from '@/views/components/form/TextInput.vue';
 import TextBox from '@/views/components/form/TextBox.vue';
 
 const props = defineProps({
@@ -30,7 +29,7 @@ watchEffect(() => {
             <text-box placeholder="타이틀을 입력해 주세요" :maxlength="30" v-model="data[i].title"/>
           </div>
         </div>
-        <text-input placeholder="캡션을 입력해 주세요" v-model="data[i].caption" class="caption"/>
+        <text-box placeholder="캡션을 입력해 주세요" v-model="data[i].caption" class="caption" :rows="2"/>
       </div>
     </div>
   </div>
