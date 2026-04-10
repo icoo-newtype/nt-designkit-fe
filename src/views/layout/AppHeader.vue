@@ -4,7 +4,7 @@ import { useBrowserStore } from '@/store/browser.store';
 import CdnImg from '@/views/components/CdnImg.vue';
 import { usePage } from '@/store/page';
 import DrawerMenuItem from '@/views/components/DrawerMenuItem.vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const browserStore = useBrowserStore();
 const pageStore = usePage();
@@ -21,6 +21,10 @@ function toggleDrawer() {
 }
 
 const route = useRoute();
+const router = useRouter();
+
+const type = computed(() => pageStore.info?.type.toLocaleLowerCase());
+const goHome = () => router.push(`/${route.params.project}/`);
 
 watch(() => route.fullPath, () => {
   menuOpen.value = false;
@@ -28,12 +32,13 @@ watch(() => route.fullPath, () => {
 </script>
 
 <template>
-  <div app-header :class="[roll]">
+  <div app-header :class="[roll, type]">
     <header>
       <div class="logo">
-        <a @click="">
+        <a>
           <cdn-img :src="pageStore.info?.logoImage" :alt="pageStore.info?.title" v-if="pageStore.info?.logoImage"/>
-          <h1 v-else>{{ pageStore.info?.title }}</h1>
+          <h1 v-if="type === 'essential' || !pageStore.info?.logoImage">
+            {{ type === 'essential' ? 'Brand Guide' : pageStore.info?.title }} </h1>
         </a>
       </div>
       <aside class="drawer" :class="{ on: menuOpen }">
@@ -71,6 +76,7 @@ watch(() => route.fullPath, () => {
     .btn-hamburger { .block; .wh(24); .contain('/image/common/ico-hamburger.svg'); .bg-c; .no-repeat; .abs; .rt(20, 18); .z(5);
       &.on { .bg('/image/common/ico-close.svg'); .wh(20); }
     }
+
   }
   .drawer { .abs; .lt; .wf;
     .drawer-holder { .abs; .rt; .wf; .fvh; .t-x(100%); .bgc(#fff); overflow-y: auto; .-box; transition: transform 0.4s ease;
@@ -98,6 +104,11 @@ watch(() => route.fullPath, () => {
       .drawer-holder { .t-x(0); }
     }
   }
+  &.essential {
+    header {
+      img + h1 { .hide; }
+    }
+  }
 }
 
 @media (@tl-up) {
@@ -115,6 +126,12 @@ watch(() => route.fullPath, () => {
         }
       }
     }
+    &.essential {
+      header { .wh(240, auto); .-r(#E8EAED);
+        .logo { .h(auto); }
+        img + h1 { .block; .m(12, 0, 0); .medium; .fs(16, 1); }
+      }
+    }
   }
 
   @media (@ds-up) {
@@ -123,6 +140,9 @@ watch(() => route.fullPath, () => {
         header { .t-y(0); }
       }
       .drawer { .w(300); }
+      &.essential {
+        header { .w(300); }
+      }
     }
   }
 }

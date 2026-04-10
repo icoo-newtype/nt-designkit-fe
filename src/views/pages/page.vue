@@ -118,7 +118,7 @@ useWindowEvent('scroll', scrolled);
 <style lang="less">
 @import '~@/less/proj';
 
-ul, ol, dl { .m; }
+ul, ol, dl, h1, h2, h3, h4, h5 { .m; }
 
 [project-page] {
   article { .rel; .mt(60);
