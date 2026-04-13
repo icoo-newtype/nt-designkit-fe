@@ -24,14 +24,9 @@ const open = computed(() =>
 const active = computed(() => open.value || route.params.page === pageCode.value);
 
 
-const articleList = computed(() => {
+const anchors = computed(() => {
   if (depth < 1) return [];
-  return JSON.parse(decodeURIComponent(atob(props.item?.article as string)))
-      .filter((item: ModuleItem) => item.type === 'title')
-      .map((item: ModuleItem) => ({
-        name: item.name,
-        title: (item.value as Record<string, string>)?.title ?? ''
-      }));
+  return page.current?.anchors;
 });
 
 function navigate() {
@@ -60,8 +55,8 @@ const activeAnchor = inject<Ref<string>>('activeAnchor');
       </ul>
     </template>
 
-    <ol v-if="depth >= 1 && active && articleList.length">
-      <li v-for="row in articleList" :key="row.name">
+    <ol v-if="depth >= 1 && active && anchors?.length">
+      <li v-for="row in anchors" :key="row.name">
         <a href="#" @click.prevent="scrollToTitle(row.title)" :class="{ 'on': activeAnchor === normalizeString(row.title) }">
           {{ row.title }}
         </a>

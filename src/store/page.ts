@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
+import { ModuleItem } from '@/types/components';
 
 export type PageItem = {
   projSq: number;
@@ -12,6 +13,7 @@ export type PageItem = {
   edit: boolean;
   article: string;
   children?: PageItem[];
+  anchors: Record<string, string>[];
 };
 
 export type PageResponse = PageItem & { data: string };
@@ -71,6 +73,13 @@ export const usePage = defineStore('pages', () => {
 
   function setCurrent(code: string) {
     current.value = findByCode(code);
+    if (!current.value) return;
+    current.value.anchors = JSON.parse(decodeURIComponent(atob(current.value?.article as string)))
+      .filter((item: ModuleItem) => item.type === 'title')
+      .map((item: ModuleItem) => ({
+        name: item.name,
+        title: (item.value as Record<string, string>)?.title ?? ''
+      }));
   }
 
   return {

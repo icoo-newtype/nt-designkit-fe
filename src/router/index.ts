@@ -11,6 +11,7 @@ import { useState } from '@/store/state';
 import { useAuthInfo } from '@/store/auth';
 import oax from '@/utils/oax';
 import { PageResponse, usePage } from '@/store/page';
+import { ModuleItem } from '@/types/components';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -86,10 +87,19 @@ const router = createRouter({
   ],
 });
 
+let isInitialLoad = true;
+
 router.beforeEach((to, from, next) => {
   const state = useState();
   const auth = useAuthInfo();
   const roles = auth.user?.roles;
+
+  // 새로고침 시 hash 제거
+  if (isInitialLoad && to.hash) {
+    isInitialLoad = false;
+    return next({ ...to, hash: '' });
+  }
+  isInitialLoad = false;
 
   let redirect: string | null = null;
 

@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="qa적용">
-      <change beforePath="$PROJECT_DIR$/src/views/pages/page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/mixins.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/mixins.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/DrawerMenuItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/DrawerMenuItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +139,7 @@
       <workItem from="1773990732913" duration="68646000" />
       <workItem from="1774851942294" duration="48400000" />
       <workItem from="1775452282990" duration="65000" />
-      <workItem from="1775455943510" duration="27511000" />
+      <workItem from="1775455943510" duration="42479000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -288,7 +293,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775642584692</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775643506519</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1775643506519</updated>
+    </task>
+    <task id="LOCAL-00021" summary="qa적용">
+      <option name="closed" value="true" />
+      <created>1775806705625</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1775806705625</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

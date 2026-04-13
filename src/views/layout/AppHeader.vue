@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { computed, nextTick, ref, watch, watchEffect } from 'vue';
+import { computed, inject, nextTick, Ref, ref, watch, watchEffect } from 'vue';
 import { useBrowserStore } from '@/store/browser.store';
 import CdnImg from '@/views/components/CdnImg.vue';
 import { usePage } from '@/store/page';
 import DrawerMenuItem from '@/views/components/DrawerMenuItem.vue';
 import { useRoute, useRouter } from 'vue-router';
+import { normalizeString } from '@/utils';
 
 const browserStore = useBrowserStore();
 const pageStore = usePage();
@@ -26,9 +27,20 @@ const router = useRouter();
 const type = computed(() => pageStore.info?.type.toLocaleLowerCase());
 const goHome = () => router.push(`/${route.params.project}/`);
 
+const anchors = computed(() => pageStore.current?.anchors || []);
+const activeAnchor = inject<Ref<string>>('activeAnchor');
+const isActiveAnchor = ref(false);
+const anchorHeight = computed(() => isActiveAnchor.value ? `${anchors.value?.length * 48 + 24}px` : '0px');
+
+function scrollToTitle(title: string) {
+  isActiveAnchor.value = false;
+  router.push({ ...route, hash: `#${title}` });
+}
+
 watch(() => route.fullPath, () => {
   menuOpen.value = false;
 });
+
 </script>
 
 <template>
@@ -52,6 +64,16 @@ watch(() => route.fullPath, () => {
       </aside>
       <a class="btn-hamburger" :class="{ on: menuOpen }" @click="toggleDrawer"></a>
     </header>
+    <div class="anchors" :class="{ 'on': isActiveAnchor}" v-if="activeAnchor">
+      <a class="current" @click="isActiveAnchor = !isActiveAnchor">{{ activeAnchor }}</a>
+      <ol :style="{ height: anchorHeight }">
+        <li v-for="row in anchors" :key="row.name">
+          <a href="#" @click.prevent="scrollToTitle(row.title)" :class="{ 'on': activeAnchor === normalizeString(row.title) }">
+            {{ row.title }}
+          </a>
+        </li>
+      </ol>
+    </div>
   </div>
 </template>
 
@@ -60,8 +82,8 @@ watch(() => route.fullPath, () => {
 .ir { .ir; }
 
 [app-header] { .fix; .lt; .wf; z-index: 49;
-  &.roll { pointer-events: none;
-    header { .t-y(-100%); }
+  &.roll {
+    header { .t-y(-100%); pointer-events: none; }
   }
   &.roll.footerVisible, &.footerVisible {
     header { .t-y(0); }
@@ -109,6 +131,24 @@ watch(() => route.fullPath, () => {
       img + h1 { .hide; }
     }
   }
+
+  .anchors { .fix; .t(0); .wf; .z(1); .bgc(#fff); .fs(16, 19);
+    .current { .block; .rel; .h(59); .p(20, 30); .-box; .medium;
+      &:after { .cnt; .abs; .rt(20, 50%); .mt(-7); .wh(14); .contain('/image/common/ico-arrow-down.svg'); }
+    }
+    ol { .p(0, 30); .-t(#E8EAED); .tr-d(.3s); .crop;
+      li {
+        a { .block; .pv(12); .c(#999); .tr-d(0.2s);
+          &.on { .c(#000); .medium; }
+        }
+      }
+    }
+
+    &.on {
+      .current:after { transform: rotate(180deg); }
+      ol { .-b(#E8EAED); .pv(12); }
+    }
+  }
 }
 
 @media (@tl-up) {
@@ -132,6 +172,8 @@ watch(() => route.fullPath, () => {
         img + h1 { .block; .m(12, 0, 0); .medium; .fs(16, 1); }
       }
     }
+
+    .anchors { .hide; }
   }
 
   @media (@ds-up) {
