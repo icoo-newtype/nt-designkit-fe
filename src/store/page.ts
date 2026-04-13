@@ -80,8 +80,6 @@ export const usePage = defineStore('pages', () => {
         name: item.name,
         title: (item.value as Record<string, string>)?.title ?? ''
       }));
-
-    console.log(current.value.anchors);
   }
 
   return {

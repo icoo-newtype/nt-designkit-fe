@@ -56,8 +56,8 @@ const router = createRouter({
           // category / page 없으면 첫 번째 페이지로 리다이렉트
           if (!category || !pageName) {
             const first = category
-              ? pageStore.codes.find(c => c.parentCode === category)  // category 있으면 해당 카테고리의 첫 번째
-              : pageStore.codes[0];                                    // 없으면 전체 첫 번째
+              ? pageStore.codes.find(c => c.parentCode === category)
+              : pageStore.codes.find(c => c.parentCode !== 'ROOT');
 
             if (first) {
               const pageCode = first.code.replace(`${first.parentCode}-`, '');
@@ -69,6 +69,7 @@ const router = createRouter({
           const exists = pageStore.codes.some(
             c => c.parentCode === category && c.code === `${category}-${pageName}`
           );
+
           if (!exists) return next({ path: '/404' });
 
           // 현재 페이지 활성화

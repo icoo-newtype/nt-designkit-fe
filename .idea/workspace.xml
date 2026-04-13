@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="qa적용">
+    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="fe header에 anchor 메뉴 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/less/mixins.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/mixins.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/DrawerMenuItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/DrawerMenuItem.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/page.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +137,7 @@
       <workItem from="1773990732913" duration="68646000" />
       <workItem from="1774851942294" duration="48400000" />
       <workItem from="1775452282990" duration="65000" />
-      <workItem from="1775455943510" duration="42479000" />
+      <workItem from="1775455943510" duration="44460000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -309,7 +307,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775806705625</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="fe header에 anchor 메뉴 추가">
+      <option name="closed" value="true" />
+      <created>1776074527043</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1776074527043</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fe header에 anchor 메뉴 추가">
+      <option name="closed" value="true" />
+      <created>1776075921571</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1776075921571</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +335,7 @@
     <MESSAGE value="init" />
     <MESSAGE value="list페이지에 필터 적용" />
     <MESSAGE value="qa적용" />
-    <option name="LAST_COMMIT_MESSAGE" value="qa적용" />
+    <MESSAGE value="fe header에 anchor 메뉴 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="fe header에 anchor 메뉴 추가" />
   </component>
 </project>

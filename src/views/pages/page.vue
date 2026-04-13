@@ -90,8 +90,6 @@ const scrolled = () => {
   activeAnchor.value = currentAnchor
       ? normalizeString((currentAnchor as HTMLElement).querySelector('.title')?.textContent!)
       : '';
-
-  console.log(activeAnchor.value);
 };
 
 useWindowEvent('scroll', scrolled);
