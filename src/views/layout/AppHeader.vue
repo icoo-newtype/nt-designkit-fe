@@ -115,8 +115,9 @@ watch(() => route.fullPath, () => {
           a { .rel; .pv(12); .fs(16, 1.2); .medium;
             &:after { .r(0); }
           }
-          ol a { .ph(12); .c(#666);
+          ol a { .ph(12); .c(#666); .br(4); .tr-d(.4s);
             &:after { .hide; }
+            .no-touch &:not(.on):hover { .bgc(#F9F9F9); }
             &.on { .bgc(#F3F4F6); .br(4); }
           }
         }
@@ -178,8 +179,8 @@ watch(() => route.fullPath, () => {
 
   @media (@ds-up) {
     [app-header] { .fix; .lt; .wf; z-index: 49;
-      &.roll { pointer-events: all;
-        header { .t-y(0); }
+      &.roll {
+        header { .t-y(0); pointer-events: auto; }
       }
       .drawer { .w(300); }
       &.essential {
