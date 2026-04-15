@@ -71,7 +71,6 @@ const hasText = (text: string): boolean => {
       .title + div { .mt(160); .fs(26, 1.5); }
     }
     &.title { .grid(2, 20); .pb(80);
-      &:before { .l(70); .r(70); }
       .title { .fs(44, 1.3); }
     }
     &.sub-title {
@@ -80,7 +79,7 @@ const hasText = (text: string): boolean => {
   }
 }
 
-@media (@ds-up) {
+@media (@dm-up) {
   [fe-title-text] {
     &.title {
       &:before { .l(0); .r(0); }

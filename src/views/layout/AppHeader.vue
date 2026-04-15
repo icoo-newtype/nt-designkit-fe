@@ -154,6 +154,9 @@ watch(() => route.fullPath, () => {
 
 @media (@tl-up) {
   [app-header] {
+    &.roll {
+      header { .t-y(0); pointer-events: auto; }
+    }
     header { .h(70);
       .logo { .h(70); .p(20, 24); }
       .btn-hamburger { .hide; }
@@ -167,25 +170,21 @@ watch(() => route.fullPath, () => {
         }
       }
     }
-    &.essential {
+    &.essential { .w(auto);
       header { .wh(240, auto); .-r(#E8EAED);
         .logo { .h(auto); }
         img + h1 { .block; .m(12, 0, 0); .medium; .fs(16, 1); }
       }
     }
-
     .anchors { .hide; }
   }
+}
 
-  @media (@ds-up) {
-    [app-header] { .fix; .lt; .wf; z-index: 49;
-      &.roll {
-        header { .t-y(0); pointer-events: auto; }
-      }
-      .drawer { .w(300); }
-      &.essential {
-        header { .w(300); }
-      }
+@media (@ds-up) {
+  [app-header] { .fix; .lt; .wf; z-index: 49;
+    .drawer { .w(300); }
+    &.essential {
+      header { .w(300); }
     }
   }
 }

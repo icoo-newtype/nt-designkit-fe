@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="fe header에 anchor 메뉴 추가">
+    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/pages/page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeTitleText.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/FeTitleText.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,31 +51,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/icoo/Project/2026/nt-designkit/designkit-fe/src/utils",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "npm.local.executor": "Run",
-    "ts.external.directory.path": "/Users/icoo/Project/2026/nt-designkit/designkit-fe/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/icoo/Project/2026/nt-designkit/designkit-fe/src/utils&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.local.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/icoo/Project/2026/nt-designkit/designkit-fe/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/utils" />
@@ -137,7 +136,8 @@
       <workItem from="1773990732913" duration="68646000" />
       <workItem from="1774851942294" duration="48400000" />
       <workItem from="1775452282990" duration="65000" />
-      <workItem from="1775455943510" duration="44460000" />
+      <workItem from="1775455943510" duration="50812000" />
+      <workItem from="1776231790679" duration="606000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -323,7 +323,23 @@
       <option name="project" value="LOCAL" />
       <updated>1776075921571</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정">
+      <option name="closed" value="true" />
+      <created>1776076875442</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1776076875442</updated>
+    </task>
+    <task id="LOCAL-00025" summary="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정">
+      <option name="closed" value="true" />
+      <created>1776135780732</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1776135780732</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +352,7 @@
     <MESSAGE value="list페이지에 필터 적용" />
     <MESSAGE value="qa적용" />
     <MESSAGE value="fe header에 anchor 메뉴 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="fe header에 anchor 메뉴 추가" />
+    <MESSAGE value="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정" />
   </component>
 </project>
