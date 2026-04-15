@@ -149,7 +149,9 @@
     &.column-4 { .grid(4, 20); }
 
     .item {
-      .view { .mt(3); .h(200); .flex-center; .br(10); .bgc(#eee); }
+      .view { .mt(3); .h(200); .flex-center; .br(10); .bgc(#eee);
+        &.outline { .-a(#E8EAED); }
+      }
       p { .rel;
         .form-control { .fs(14); .ib; .w(150); .bgc(#fff); }
         span { .ib; .abs; .lt(3, 50%); .t-yc; }

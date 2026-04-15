@@ -27,8 +27,8 @@ const doubled = computed(() => [...data.value, ...data.value]);
 <style lang="less">
 @import '~@/less/proj.less';
 
-[fe-slider] { .pb(120);
-  overflow: hidden;
+[fe-slider] { .pb(120); overflow: hidden;
+  img, video { .br(10); }
 
   ul {
     .flex;

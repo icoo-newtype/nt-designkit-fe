@@ -21,7 +21,7 @@ const data = computed(() => props.info.value);
           <VideoPlayer playsinline loop autoplay fit="cover" :src="row.media" v-else-if="getMediaTypeFromPath(row.media) === 'video'"/>
           <p class="title" v-html="enterToBr(row.title)" v-if="row.title"></p>
         </div>
-        <p class="caption" v-html="row.caption" v-if="row.caption"></p>
+        <p class="caption" v-html="enterToBr(row.caption)" v-if="row.caption"></p>
       </li>
     </ul>
   </div>

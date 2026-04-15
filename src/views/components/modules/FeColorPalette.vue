@@ -16,9 +16,11 @@ const length = computed(() => Number(props.info.type?.match(/\d+/)?.[0] ?? 0));
     <p class="title" v-if="data.title">{{ data.title }}</p>
     <ul :class="`column-${length}`">
       <li v-for="(row, i) in data.colors" :key="i">
-        <p class="sub-title" v-if="row.subTitle">{{ row.subTitle }}</p>
-        <div class="view" :class="{ outline: ['FFF', 'FFFFFF'].includes(row.color.toUpperCase()) }" :style="{ backgroundColor: `#${row.color}` }"></div>
-        <p class="color">#{{ row.color }}</p>
+        <template v-if="row.color">
+          <p class="sub-title" v-if="row.subTitle">{{ row.subTitle }}</p>
+          <div class="view" :class="{ outline: ['FFF', 'FFFFFF'].includes(row.color.toUpperCase()) }" :style="{ backgroundColor: `#${row.color}` }"></div>
+          <p class="color">#{{ row.color }}</p>
+        </template>
       </li>
     </ul>
   </div>
