@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
-import { computed } from 'vue';
-import { enterToBr } from '@/utils';
+import { computed, ref } from 'vue';
+import { enterToBr, useWindowEvent } from '@/utils';
 
 const props = defineProps<{
   info: Record<string, any>
@@ -11,6 +11,26 @@ const props = defineProps<{
 const data = computed(() => props.info.value);
 const length = computed(() => Number(props.info.type?.match(/\d+/)?.[0] ?? 0));
 
+const copiedIndex = ref<number | null>(null);
+const tooltipPos = ref({ x: 0, y: 0 });
+const windowWidth = ref(window.innerWidth);
+const isMobile = computed(() => window.innerWidth < 1440);
+
+useWindowEvent('resize', () => windowWidth.value = window.innerWidth);
+
+function onMouseMove(e: MouseEvent) {
+  if (isMobile.value) return;
+  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+  tooltipPos.value = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+}
+
+async function copyHex(color: string, index: number) {
+  await navigator.clipboard.writeText(`#${color}`);
+  copiedIndex.value = index;
+  setTimeout(() => {
+    copiedIndex.value = null;
+  }, 1500);
+}
 </script>
 <template>
   <div fe-color-palette>
@@ -19,7 +39,12 @@ const length = computed(() => Number(props.info.type?.match(/\d+/)?.[0] ?? 0));
       <li v-for="(row, i) in data.colors" :key="i">
         <template v-if="row.color">
           <p class="sub-title">{{ row.subTitle || '&nbsp' }}</p>
-          <div class="view" :class="{ outline: ['FFF', 'FFFFFF'].includes(row.color.toUpperCase()) }" :style="{ backgroundColor: `#${row.color}` }"></div>
+          <div class="view" :class="{ outline: ['FFF', 'FFFFFF'].includes(row.color.toUpperCase()) }" :style="{ backgroundColor: `#${row.color}` }" @mousemove="onMouseMove" @click="copyHex(row.color, i)">
+              <span class="tooltip" :class="{ copied: copiedIndex === i }" :style="isMobile ? {} : { left: `${tooltipPos.x}px`, top: `${tooltipPos.y}px` }" :key="`p${i}`">
+                <em class="copy-text">Copy HEX</em>
+                <em class="copied-text">HEX Copied!</em>
+              </span>
+          </div>
           <p class="color">#{{ row.color }}</p>
           <p v-html="enterToBr(row.appendix)"></p>
         </template>
@@ -36,8 +61,21 @@ const length = computed(() => Number(props.info.type?.match(/\d+/)?.[0] ?? 0));
   ul { .grid(2); grid-column-gap: 10px; grid-row-gap: 16px;
     li { .flex; flex-direction: column; justify-content: flex-start;
       .sub-title { .fs(14, 1.4); .semi-bold; .mb(12); }
-      .view { .br(6); .h(82);
+      .view { .br(6); .h(82); .rel; cursor: pointer;
         &.outline { .-a(#E8EAED); }
+        .tooltip { .abs; .lt(50%, 50%); .p(6, 10); transform: translate(-50%, -50%);
+          background: rgba(255, 255, 255, 0.9); .fs(14, 1); .br(4); .medium;
+          white-space: nowrap; pointer-events: none;
+          opacity: 0;
+          &.copied { opacity: 1; }
+          .copy-text { display: block; }
+          .copied-text { display: none; }
+          &.copied {
+            .copy-text { display: none; }
+            .copied-text { display: block; }
+          }
+          .copy-text { display: none; }
+        }
       }
       p { .c(#666); }
       .color { .mt(8); }
@@ -54,6 +92,19 @@ const length = computed(() => Number(props.info.type?.match(/\d+/)?.[0] ?? 0));
       &.column-4 { .grid(4, 16); }
       li {
         .view { .br(6); .h(120);}
+      }
+    }
+  }
+}
+
+@media (@ds-up) {
+  [fe-color-palette] {
+    ul li {
+      .view { cursor: pointer;
+        .tooltip { left: 0; top: 0; transform: translate(10px, 10px); opacity: 0;
+          .copy-text { display: block; }
+        }
+        &:hover .tooltip { opacity: 1; }
       }
     }
   }
