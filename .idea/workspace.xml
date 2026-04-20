@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정">
+    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="[fe] 추가 QA 적용">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeTitleText.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/FeTitleText.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/less/module.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/less/module.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/ColorPalette.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/ColorPalette.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeColorPalette.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/FeColorPalette.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +138,8 @@
       <workItem from="1774851942294" duration="48400000" />
       <workItem from="1775452282990" duration="65000" />
       <workItem from="1775455943510" duration="50812000" />
-      <workItem from="1776231790679" duration="606000" />
+      <workItem from="1776231790679" duration="3452000" />
+      <workItem from="1776659384346" duration="962000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -339,7 +341,23 @@
       <option name="project" value="LOCAL" />
       <updated>1776135780732</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776232409705</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1776232409705</updated>
+    </task>
+    <task id="LOCAL-00027" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776241991809</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1776241991809</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,6 +371,7 @@
     <MESSAGE value="qa적용" />
     <MESSAGE value="fe header에 anchor 메뉴 추가" />
     <MESSAGE value="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정" />
+    <MESSAGE value="[fe] 추가 QA 적용" />
+    <option name="LAST_COMMIT_MESSAGE" value="[fe] 추가 QA 적용" />
   </component>
 </project>

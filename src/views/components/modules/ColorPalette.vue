@@ -2,6 +2,7 @@
 
 import { computed, ref, watch, watchEffect } from 'vue';
 import TextInput from '@/views/components/form/TextInput.vue';
+import TextBox from '@/views/components/form/TextBox.vue';
 
 const props = defineProps({
   modelValue: { type: Object, default: null },
@@ -16,7 +17,7 @@ const hasTitle = computed(() => props.type?.includes('title'));
 
 const initData = () => {
   const colors = Array.from({ length: length.value }, (_, i) =>
-      props.modelValue?.colors?.[i] ?? { subTitle: '', color: '#' }
+      props.modelValue?.colors?.[i] ?? { subTitle: '', color: '#', appendix: '' }
   );
   data.value = {
     title: props.modelValue?.title ?? '',
@@ -45,6 +46,7 @@ watch(data, (val) => emit('update:modelValue', val), { deep: true });
           <text-input v-model="col.color" class="color"/>
           <span>#</span>
         </p>
+        <text-box v-model="col.appendix" placeholder="Appendix color"/>
       </div>
     </div>
   </div>

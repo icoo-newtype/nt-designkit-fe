@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { computed } from 'vue';
+import { enterToBr } from '@/utils';
 
 const props = defineProps<{
   info: Record<string, any>
@@ -17,9 +18,10 @@ const length = computed(() => Number(props.info.type?.match(/\d+/)?.[0] ?? 0));
     <ul :class="`column-${length}`">
       <li v-for="(row, i) in data.colors" :key="i">
         <template v-if="row.color">
-          <p class="sub-title" v-if="row.subTitle">{{ row.subTitle }}</p>
+          <p class="sub-title">{{ row.subTitle || '&nbsp' }}</p>
           <div class="view" :class="{ outline: ['FFF', 'FFFFFF'].includes(row.color.toUpperCase()) }" :style="{ backgroundColor: `#${row.color}` }"></div>
           <p class="color">#{{ row.color }}</p>
+          <p v-html="enterToBr(row.appendix)"></p>
         </template>
       </li>
     </ul>
@@ -32,12 +34,13 @@ const length = computed(() => Number(props.info.type?.match(/\d+/)?.[0] ?? 0));
 [fe-color-palette] {
   .title { .fs(16, 1.4); .semi-bold; .mb(20); }
   ul { .grid(2); grid-column-gap: 10px; grid-row-gap: 16px;
-    li { .flex; flex-direction: column; justify-content: flex-end;
+    li { .flex; flex-direction: column; justify-content: flex-start;
       .sub-title { .fs(14, 1.4); .semi-bold; .mb(12); }
       .view { .br(6); .h(82);
         &.outline { .-a(#E8EAED); }
       }
-      .color { .mt(8); .c(#666); }
+      p { .c(#666); }
+      .color { .mt(8); }
     }
   }
 

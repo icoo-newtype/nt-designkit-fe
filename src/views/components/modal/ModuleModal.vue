@@ -150,6 +150,9 @@ watch(() => colorCol2title.value, () => {
           <b-card @click="resolve({ name:'Slider', comp: 'Slider', type:'slider', value: null })">
             <div class="text">
               <p class="title">Slider</p>
+              <p class="sum">
+                이미지 업로드 시 원본 사이즈(x1)로 노출됩니다. <br>
+                권장 사이즈 : <b>600x600 / 1067x600 / 480x600 </b></p>
             </div>
             <div class="view slider">
               <div class="box"><img src="/admin_image/module/img.svg" alt=""></div>
@@ -255,7 +258,7 @@ watch(() => colorCol2title.value, () => {
     .card { .pointer; .br(0); .-a; .bgc(transparent);
       .card-body {.p(0, 0, 48);
         .title {.fs(20, 1.2); .mb(14); .medium; color: #1c1c1c;}
-        .sum {.mb(24); .fs(16, 1.25, -0.2); color: #666; }
+        .sum {.mb(24); .fs(16, 1.5); color: #666; }
         > img {.wf; .-a(2px, #fff);}
         .btn-group { .mv(20);
           .btn-default { .bgc(#fff); .-a(#fff); }
