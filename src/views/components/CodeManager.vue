@@ -138,11 +138,13 @@ const save = async () => {
     return;
   }
   let code = detailInfo.value.code;
-  if (code && /[`~!@#$%^&*()+_ [\]{}\\|=,./<>?;':"\s-]+/.test(code)) {
-    await confirm('경로 설정', '경로에는 공백 및 특수문자를 포함할 수 없습니다.');
-    return false;
+  if (!detailInfo.value.edit) {
+    if (code && /[`~!@#$%^&*()+_ [\]{}\\|=,./<>?;':"\s-]+/.test(code)) {
+      await confirm('경로 설정', '경로에는 공백 및 특수문자를 포함할 수 없습니다.');
+      return false;
+    }
+    code = detailInfo.value.parentCode === 'ROOT' ? `${code}` : `${detailInfo.value.parentCode}-${code}`;
   }
-  code = detailInfo.value.parentCode === 'ROOT' ? `${code}` : `${detailInfo.value.parentCode}-${code}`;
   await oax.post('/api/admin/code', { ...detailInfo.value, code, projSq: props.sq, data: JSON.stringify(detailInfo.value.data) });
   success('저장되었습니다');
   closeDetail();
