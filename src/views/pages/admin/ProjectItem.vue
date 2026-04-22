@@ -111,7 +111,7 @@ if (sq.value) getData();
       </div>
       <div class="setup" v-else>
         <TextBox required class="title" placeholder="프로젝트명을 입력해주세요" v-model="apiData.title" no-resize/>
-        <a @click="copySlug">{{ `${state.host}/${apiData.slug}` }}</a>
+        <a :href="`${state.host}/${apiData.slug}`" target="_blank">{{ `${state.host}/${apiData.slug}` }}</a>
         <code-manager :sq="apiData.sq" :slug="apiData.slug"/>
         <h2 class="mt-100">기본 정보</h2>
         <div class="grid">
