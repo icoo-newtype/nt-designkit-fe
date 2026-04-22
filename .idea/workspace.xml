@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="[fe] 추가 QA 적용">
+      <change afterPath="$PROJECT_DIR$/public/favicon.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/CodeManager.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/CodeManager.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +138,7 @@
       <workItem from="1775452282990" duration="65000" />
       <workItem from="1775455943510" duration="50812000" />
       <workItem from="1776231790679" duration="3452000" />
-      <workItem from="1776659384346" duration="8430000" />
+      <workItem from="1776659384346" duration="12935000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -371,7 +372,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776677511861</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="[fe] 추가 QA 적용">
+      <option name="closed" value="true" />
+      <created>1776758679924</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1776758679924</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
