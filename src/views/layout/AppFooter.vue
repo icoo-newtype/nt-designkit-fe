@@ -9,9 +9,14 @@ const pageStore = usePage();
 const resource = computed(() => {
   return pageStore.info?.resource ?? [];
 });
+
+const goTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 </script>
 <template>
   <footer app-footer>
+    <a class="btn-top ir" @click="goTop">TOP</a>
     <div class="split-warp">
       <div class="logo">
         <cdn-img :src="pageStore.info?.footerLogoImage" :alt="pageStore.info?.title" v-if="pageStore.info?.footerLogoImage"/>
@@ -25,12 +30,24 @@ const resource = computed(() => {
         </ul>
       </div>
     </div>
-    <p class="copyright">© 2026 Newtype Inc.</p>
+    <p class="copyright">Design Kit is a design asset service by <a href="https://newtype.design" target="_blank">Newtype Imageworks</a></p>
   </footer>
 </template>
 <style lang="less">
 @import '~@/less/proj';
+
+@keyframes bounce-up {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-10px); }
+  55% { transform: translateY(-4px); }
+  75% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
 [app-footer] { .rel; .p(40, 20, 50); .bgc(#000); .c(#fff);
+  .btn-top { .block; .abs; .rt(20, -62); .wh(32); .contain('/image/common/ico-top.svg');
+    .no-touch &:hover { animation: bounce-up 0.5s ease; }
+  }
   .logo {
     img { .block; .h(50); }
   }
@@ -42,11 +59,14 @@ const resource = computed(() => {
       }
     }
   }
-  .copyright { .mt(120); .-t(#333); .pt(20); }
+  .copyright { .mt(120); .-t(#333); .pt(20);
+    .no-touch & a:hover { .c(#fff); }
+  }
 }
 
 @media (@tp-up) {
   [app-footer] { .p(70, 30, 50);
+    .btn-top { .r(30); }
     .split-warp { .grid(2); }
     .resource { .mt(0); }
     .copyright { .mt(120); .fs(14, 1.3); .c(#808080); }
@@ -54,11 +74,12 @@ const resource = computed(() => {
 }
 
 @media (@tl-up) {
-  [app-footer] { .p(70, 50, 50); }
+  [app-footer] { .p(70, 30, 50); }
 }
 
 @media (@dm-up) {
   [app-footer] { .p(70, 70, 50);
+    .btn-top { .rt(70, -70); .wh(40); }
     .resource {
       p { .fs(24); }
     }

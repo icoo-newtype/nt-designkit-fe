@@ -49,8 +49,7 @@ watch(() => route.fullPath, () => {
       <div class="logo">
         <a>
           <cdn-img :src="pageStore.info?.logoImage" :alt="pageStore.info?.title" v-if="pageStore.info?.logoImage"/>
-          <h1 v-if="type === 'essential' || !pageStore.info?.logoImage">
-            {{ type === 'essential' ? 'Brand Guide' : pageStore.info?.title }} </h1>
+          <h1 v-else>{{ pageStore.info?.title }} </h1>
         </a>
       </div>
       <aside class="drawer" :class="{ on: menuOpen }">
