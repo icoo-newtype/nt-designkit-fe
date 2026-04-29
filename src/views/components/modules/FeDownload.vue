@@ -9,7 +9,6 @@ defineProps<{
 const cdnHost = import.meta.env.VITE_CDN_HOST;
 
 const download = (url: string) => {
-  console.log(url);
   window.open(url, '_blank');
 };
 </script>

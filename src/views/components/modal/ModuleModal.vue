@@ -33,7 +33,7 @@ const tabList = ref([
   // },
   {
     name: 'Appendix',
-    subList: ['Blank', 'Color Palette'],
+    subList: ['Blank', 'Color Palette', 'Resources'],
   },
 ]);
 const mediaCol2type = ref('basic');
@@ -227,6 +227,29 @@ watch(() => colorCol2title.value, () => {
             </div>
           </b-card>
         </template>
+        <template v-if="selected.active === 'Resources'">
+          <b-card>
+            <div class="text">
+              <p class="title">Basic</p>
+            </div>
+            <div class="view resource" @click="resolve({ name:'Resource', comp: 'Resource', type: 'resource'})">
+              <div class="box">
+                <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+                <div>
+                  <p>파일명을 입력해 주세요</p>
+                  <p>파일 사이즈를 단위와 함께 입력해 주세요.</p>
+                </div>
+              </div>
+              <div class="box">
+                <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+                <div>
+                  <p>파일명을 입력해 주세요</p>
+                  <p>파일 사이즈를 단위와 함께 입력해 주세요.</p>
+                </div>
+              </div>
+            </div>
+          </b-card>
+        </template>
       </div>
     </div>
   </Modal>
@@ -307,6 +330,12 @@ watch(() => colorCol2title.value, () => {
                 .color + p { .mt(6); .fs(10); }
               }
             }
+          }
+          &.resource { .ph(52); .grid(2);
+            .box { .flex; .pv(15); }
+            .img { .br(5); .flex-center; .bgc(#F4F4F4); .wh(150, 90); .mr(20); }
+            p { .fs(14); .c(#666); }
+            p + p { .mt(6); .fs(10); }
           }
         }
       }

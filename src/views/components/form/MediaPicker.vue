@@ -20,7 +20,7 @@ import { formatBytes } from '@/utils';
 
 const cdnHost = import.meta.env.VITE_CDN_HOST;
 const props = defineProps<{
-  mediaType: 'image' | 'video' | 'audio' | 'resource' | 'media';
+  mediaType: 'image' | 'video' | 'audio' | 'resource' | 'media' | 'any';
   filekey?: string;
   modelValue?: FileItem;
   show: boolean;
@@ -40,7 +40,7 @@ const keyword = ref('');
 const description = ref<string>();
 const descriptionEdit = ref(false);
 const title = computed(() => {
-  return { 'image': '이미지', 'video': '영상', 'audio': '오디오', 'resource': '리소스', 'media': '미디어' }[props.mediaType];
+  return { 'image': '이미지', 'video': '영상', 'audio': '오디오', 'resource': '리소스', 'media': '미디어', 'any': '파일' }[props.mediaType] ?? '파일';
 });
 const list = ref<FileItem[]>();
 const filtered = computed(() => {
@@ -71,7 +71,7 @@ const map = {
   ],
 };
 const accept = computed(() => {
-  if (props.mediaType === 'media') return Object.values(map).flat();
+  if (props.mediaType === 'media' || props.mediaType === 'any') return Object.values(map).flat();
   return map[props.mediaType] || [];
 });
 const getMediaType = (fileType: string): 'image' | 'video' | 'audio' | 'resource' | null => {

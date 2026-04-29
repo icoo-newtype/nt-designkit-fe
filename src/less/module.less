@@ -159,3 +159,15 @@
     }
   }
 }
+
+[resources] { .ph(70);
+  .list { .grid(2, 30); .pv(20);
+    .col { .flex;
+      [image-select] { .wh(200, 120); .mr(30);
+        .holder { min-width: auto; min-height: auto; }
+      }
+      [image-select] + div { flex-grow: 1; }
+      [text-input] { .ph(0); .mt(3); }
+    }
+  }
+}
