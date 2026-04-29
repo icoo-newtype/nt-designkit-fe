@@ -36,18 +36,8 @@ const goTop = () => {
 <style lang="less">
 @import '~@/less/proj';
 
-@keyframes bounce-up {
-  0% { transform: translateY(0); }
-  30% { transform: translateY(-10px); }
-  55% { transform: translateY(-4px); }
-  75% { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
-}
-
 [app-footer] { .rel; .p(40, 20, 50); .bgc(#000); .c(#fff);
-  .btn-top { .block; .abs; .rt(20, -62); .wh(32); .contain('/image/common/ico-top.svg');
-    .no-touch &:hover { animation: bounce-up 0.5s ease; }
-  }
+  .btn-top { .block; .abs; .rt(20, -62); .wh(32); .contain('/image/common/ico-top.svg'); }
   .logo {
     img { .block; .h(50); }
   }
@@ -59,7 +49,7 @@ const goTop = () => {
       }
     }
   }
-  .copyright { .mt(120); .-t(#333); .pt(20);
+  .copyright { .mt(120); .-t(#333); .pt(20); .c(#808080);
     .no-touch & a:hover { .c(#fff); }
   }
 }
@@ -69,7 +59,7 @@ const goTop = () => {
     .btn-top { .r(30); }
     .split-warp { .grid(2); }
     .resource { .mt(0); }
-    .copyright { .mt(120); .fs(14, 1.3); .c(#808080); }
+    .copyright { .mt(120); .fs(14, 1.3); }
   }
 }
 

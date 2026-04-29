@@ -145,6 +145,14 @@ watch(() => colorCol2title.value, () => {
               <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
             </div>
           </b-card>
+          <b-card @click="resolve({ name:'Video', comp: 'Video', type:'basic', value: null })">
+            <div class="text">
+              <p class="title">Video</p>
+            </div>
+            <div class="view media">
+              <div class="img"><img src="/admin_image/module/video.svg" alt=""></div>
+            </div>
+          </b-card>
         </template>
         <template v-if="selected.active === 'Slider'">
           <b-card @click="resolve({ name:'Slider', comp: 'Slider', type:'slider', value: null })">

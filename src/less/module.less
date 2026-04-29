@@ -104,6 +104,19 @@
   &.incorrect .title { .bgc(#FF6140); }
   &.correct .title { .bgc(#00BF40); }
 }
+[video] { .p(10, 70); .wf; .min-h(350); .mh-c;
+  .view { .rel;
+    .title { .abs; .lb(0, -3); .wf; .p(0, 12, 0, 36); .-box; border-radius: 0 0 10px 10px;
+      &:before { .cnt; .bg('/image/common/ico-x.svg'); .wh(20); .abs; .lt(12, 6); }
+      [text-box] { .ph(0); .fs(14, 1.4); .c(@c-black);
+        &::placeholder { .c(@c-black); }
+        &:focus { .bgc(transparent); .-a(transparent); }
+        &:hover { .bgc(transparent); .-a(transparent); }
+      }
+    }
+  }
+  .caption { .mt(8); }
+}
 
 [slider] {
   .grid-wrap { .grid(6, 10);

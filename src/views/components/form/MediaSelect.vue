@@ -14,6 +14,7 @@ const props = defineProps<{
   modelValue?: string,
   required?: boolean,
   message?: string,
+  mediaType?: 'image' | 'video' | 'audio' | 'resource' | 'media' | 'any' | undefined | null,
 }>();
 
 const emit = defineEmits(['update:modelValue']);
@@ -34,12 +35,12 @@ const model = computed({
       <VideoPlayer controls fit="cover" :src="info.location" v-else-if="info && getMediaTypeFromPath(info.location) === 'video'"/>
       <div v-else class="plus">
         <i class="plus-icon"></i>
-        <p>Add an image or video</p>
+        <p>Add an File</p>
         <p class="message">{{ message }}</p>
       </div>
       <div v-if="info" class="cov d-flex align-items-center justify-content-center">Change</div>
     </div>
-    <MediaPicker media-type="media" :filekey="filekey" :value="info" v-model="model" v-model:show="showPicker"/>
+    <MediaPicker :media-type="mediaType || 'media'" :filekey="filekey" :value="info" v-model="model" v-model:show="showPicker"/>
   </div>
 </template>
 <style lang="less">
