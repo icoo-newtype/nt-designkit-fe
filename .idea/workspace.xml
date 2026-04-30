@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="Resource 모듈 추가" />
+    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="video 모듈 추가">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeResource.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/FeResource.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/modules/Resource.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/Resource.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectArticle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/admin/ProjectArticle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/admin/ProjectItem.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,10 +81,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/views/components/modules" />
+      <recent name="$PROJECT_DIR$/public/admin_image/module" />
       <recent name="$PROJECT_DIR$/public/image/common" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/utils" />
-      <recent name="$PROJECT_DIR$/src/views/components/common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -134,7 +140,7 @@
       <workItem from="1775452282990" duration="65000" />
       <workItem from="1775455943510" duration="50812000" />
       <workItem from="1776231790679" duration="3452000" />
-      <workItem from="1776659384346" duration="29226000" />
+      <workItem from="1776659384346" duration="35385000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -416,7 +422,23 @@
       <option name="project" value="LOCAL" />
       <updated>1777441193042</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Resource 모듈 추가">
+      <option name="closed" value="true" />
+      <created>1777441499620</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1777441499620</updated>
+    </task>
+    <task id="LOCAL-00037" summary="video 모듈 추가">
+      <option name="closed" value="true" />
+      <created>1777443311839</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1777443311839</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,6 +454,7 @@
     <MESSAGE value="[fe] 첫번째 프로젝트 slug만으로 페이지 진입 가능하게 수정" />
     <MESSAGE value="[fe] 추가 QA 적용" />
     <MESSAGE value="Resource 모듈 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="Resource 모듈 추가" />
+    <MESSAGE value="video 모듈 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="video 모듈 추가" />
   </component>
 </project>

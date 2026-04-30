@@ -67,6 +67,7 @@ const getData = async () => {
   Object.assign(apiData, data);
   article.value = apiData.article ? JSON.parse(decodeURIComponent(atob(apiData.article))) : [];
   loading.value = false;
+  console.log(article.value);
 };
 
 provide('filekey', 'PROJ');

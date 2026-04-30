@@ -25,11 +25,13 @@ const download = (url: string) => {
 <template>
   <div fe-resource>
     <div class="item" v-for="row in info.value" :key="row.filename">
-      <cdn-img :src="row.thumb"/>
-      <div>
-        <p class="name">{{ row.filename }}</p>
-        <p>{{ row.type }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ row.size }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ formatCapacity(row.capacity) }}</p>
-        <b-button variant="default" @click="download(`${cdnHost}/${row.location}`)">Download</b-button>
+      <div class="box" v-if="row.location">
+        <cdn-img :src="row.thumb"/>
+        <div>
+          <p class="name">{{ row.filename }}</p>
+          <p>{{ row.type }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ row.size }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ formatCapacity(row.capacity) }}</p>
+          <b-button variant="default" @click="download(`${cdnHost}/${row.location}`)">Download</b-button>
+        </div>
       </div>
     </div>
   </div>
@@ -39,7 +41,8 @@ const download = (url: string) => {
 @import '~@/less/proj.less';
 
 [fe-resource] { .mb(20);
-  .item { .br(6); .bgc(#F8F8F8); .p(20, 16); .flex;
+  .item {
+    .box { .br(6); .bgc(#F8F8F8); .p(20, 16); .flex; }
     img { .block; .w(117); aspect-ratio: 16 / 9; object-fit: contain; }
     img + div { flex-grow: 1; .ml(20); .rel;
       .name { .fs(15); .semi-bold; }
@@ -56,7 +59,8 @@ const download = (url: string) => {
 
 @media (@tp-up) {
   [fe-resource] {
-    .item { .p(20);
+    .item {
+      .box { .p(20); }
       img { .w(200); }
       img + div { .ml(30);
         .name { .fs(16); }

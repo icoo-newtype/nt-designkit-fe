@@ -76,8 +76,8 @@ const getData = async () => {
 
   Object.assign(apiData, data);
   resourceList.value = JSON.parse(decodeURIComponent(atob(data.resource as string)));
-  console.log(resourceList.value);
   loading.value = false;
+
 };
 
 watch(() => apiData.title, (val) => {

@@ -48,7 +48,7 @@ watchEffect(() => {
         <image-select :filekey="filekey" v-model="data[i].thumb"/>
         <div>
           <div class="d-flex">
-            <DropSelect required class="w-120 mr-2" v-model="data[i].type" placeholder="파일 구분" :list="['Image','Video','PDF','etc']"/>
+            <DropSelect class="w-120 mr-2" v-model="data[i].type" placeholder="파일 구분" :list="['Image','Video','PDF','etc']"/>
             <b-button variant="default" @click="pickerIndex = i; showMediaPicker = true">{{ data[i].location ? 'Change' : 'Upload' }} File</b-button>
           </div>
           <text-input placeholder="파일명을 입력해 주세요" v-model="data[i].filename"/>
