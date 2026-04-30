@@ -29,7 +29,8 @@ const download = (url: string) => {
         <cdn-img :src="row.thumb"/>
         <div>
           <p class="name">{{ row.filename }}</p>
-          <p>{{ row.type }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ row.size ? row.size + '&nbsp;&nbsp;|&nbsp;&nbsp;' : '' }}{{ formatCapacity(row.capacity) }}</p>
+          <p>{{ row.type ? row.type + '&nbsp;&nbsp;|&nbsp;&nbsp;' : '' }}{{ row.size ? row.size + '&nbsp;&nbsp;|&nbsp;&nbsp;' : ''
+            }}{{ formatCapacity(row.capacity) }}</p>
           <b-button variant="default" @click="download(`${cdnHost}/${row.location}`)">Download</b-button>
         </div>
       </div>
@@ -43,8 +44,8 @@ const download = (url: string) => {
 [fe-resource] { .mb(20);
   .item {
     .box { .br(6); .bgc(#F8F8F8); .p(20, 16); .flex; .h(110); }
-    img { .block; .w(117); aspect-ratio: 4 / 3; object-fit: contain; }
-    img + div { flex-grow: 1; .ml(20); .rel;
+    img { .block; .wh(117, 70); object-fit: contain; flex-shrink: 0; }
+    img + div { .ml(20); .rel; flex-grow: 1; min-width: 0;
       .name { .fs(15); .semi-bold; .ellipsis(1); }
       .name + p { .hide; }
       .btn { .abs; .lb; .p(8, 12); }
@@ -61,7 +62,7 @@ const download = (url: string) => {
   [fe-resource] {
     .item {
       .box { .p(20); .h(160); }
-      img { .w(200); }
+      img { .wh(200, 120); }
       img + div { .ml(30);
         .name { .fs(16); }
         .name + p { .block; .mt(4); .c(#666); .fs(13); }
@@ -72,9 +73,11 @@ const download = (url: string) => {
 }
 
 @media (@ds-up) {
-  [fe-resource] { .mb(30); .grid(2, 30);
-    .item img + div {
-      .name { .ellipsis(2); }
+  [fe-resource] { .mb(30); .grid(2, 30); grid-template-columns: repeat(2, minmax(0, 1fr));
+    .item {
+      img + div {
+        .name { .ellipsis(2); }
+      }
     }
     .item + .item { .mt(0); }
   }
