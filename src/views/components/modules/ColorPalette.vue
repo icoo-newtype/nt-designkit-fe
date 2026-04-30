@@ -37,15 +37,15 @@ watch(data, (val) => emit('update:modelValue', val), { deep: true });
 
 <template>
   <div color-palette>
-    <text-input placeholder="Color title" v-model="data.title" class="title" v-if="hasTitle"/>
+    <text-input required placeholder="Color title" v-model="data.title" class="title" v-if="hasTitle"/>
     <div class="list" :class="`column-${length}`">
       <div class="item" v-for="(col, idx) in data.colors" :key="idx">
-        <text-input placeholder="Color subtitle" v-model="col.subTitle" class="sub-title"/>
         <div class="view" :style="{ backgroundColor: `#${col.color}` }" :class="{ outline: ['FFF', 'FFFFFF'].includes(col.color.toUpperCase()) }"></div>
         <p>
           <text-input v-model="col.color" class="color"/>
           <span>#</span>
         </p>
+        <text-input required placeholder="Color subtitle" v-model="col.subTitle" class="sub-title"/>
         <text-box v-model="col.appendix" placeholder="Appendix color"/>
       </div>
     </div>

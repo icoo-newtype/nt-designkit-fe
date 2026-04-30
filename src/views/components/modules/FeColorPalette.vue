@@ -31,6 +31,14 @@ async function copyHex(color: string, index: number) {
     copiedIndex.value = null;
   }, 1500);
 }
+
+function getViewStyle(color: string) {
+  const isWhite = ['FFF', 'FFFFFF'].includes(color.toUpperCase());
+  return {
+    backgroundColor: `#${color}`,
+    borderColor: isWhite ? '#E8EAED' : `#${color}`,
+  };
+}
 </script>
 <template>
   <div fe-color-palette>
@@ -38,15 +46,17 @@ async function copyHex(color: string, index: number) {
     <ul :class="`column-${length}`">
       <li v-for="(row, i) in data.colors" :key="i">
         <template v-if="row.color">
-          <p class="sub-title">{{ row.subTitle || '&nbsp' }}</p>
-          <div class="view" :class="{ outline: ['FFF', 'FFFFFF'].includes(row.color.toUpperCase()) }" :style="{ backgroundColor: `#${row.color}` }" @mousemove="onMouseMove" @click="copyHex(row.color, i)">
-              <span class="tooltip" :class="{ copied: copiedIndex === i }" :style="isMobile ? {} : { left: `${tooltipPos.x}px`, top: `${tooltipPos.y}px` }" :key="`p${i}`">
-                <em class="copy-text">Copy HEX</em>
-                <em class="copied-text">HEX Copied!</em>
-              </span>
+          <div class="view" :style="getViewStyle(row.color)" @mousemove="onMouseMove" @click="copyHex(row.color, i)">
+            <span class="tooltip" :class="{ copied: copiedIndex === i }" :style="isMobile ? {} : { left: `${tooltipPos.x}px`, top: `${tooltipPos.y}px` }" :key="`p${i}`">
+              <em class="copy-text">Copy HEX</em>
+              <em class="copied-text">HEX Copied!</em>
+            </span>
           </div>
-          <p class="color">#{{ row.color }}</p>
-          <p v-html="enterToBr(row.appendix)"></p>
+          <div class="text">
+            <p class="sub-title">{{ row.subTitle || '&nbsp' }}</p>
+            <p>#{{ row.color }}</p>
+            <p v-html="enterToBr(row.appendix)"></p>
+          </div>
         </template>
       </li>
     </ul>
@@ -59,10 +69,8 @@ async function copyHex(color: string, index: number) {
 [fe-color-palette] {
   .title { .fs(16, 1.4); .semi-bold; .mb(20); }
   ul { .grid(2); grid-column-gap: 10px; grid-row-gap: 16px;
-    li { .flex; flex-direction: column; justify-content: flex-start;
-      .sub-title { .fs(14, 1.4); .semi-bold; .mb(12); }
-      .view { .br(6); .h(82); .rel; cursor: pointer;
-        &.outline { .-a(#E8EAED); }
+    li { .rel; .br(10); .-a(#E8EAED); .crop;
+      .view { .abs; .lt(-1); .r(-1); .t(-1); .h(120); cursor: pointer; .-a(#E8EAED);
         .tooltip { .abs; .lt(50%, 50%); .p(6, 10); transform: translate(-50%, -50%);
           background: rgba(255, 255, 255, 0.9); .fs(14, 1); .br(4); .medium;
           white-space: nowrap; pointer-events: none;
@@ -77,8 +85,9 @@ async function copyHex(color: string, index: number) {
           .copy-text { display: none; }
         }
       }
-      p { .c(#666); }
-      .color { .mt(8); }
+      .text { .p(136, 16, 16); }
+      .sub-title { .fs(14, 1.4); .semi-bold; .mb(8); }
+      p:not(.sub-title) { .fs(11, 1.4); .c(#666); }
     }
   }
 
@@ -90,9 +99,6 @@ async function copyHex(color: string, index: number) {
     ul {
       &.column-2 { .grid(2, 16); }
       &.column-4 { .grid(4, 16); }
-      li {
-        .view { .br(6); .h(120);}
-      }
     }
   }
 }
@@ -112,13 +118,15 @@ async function copyHex(color: string, index: number) {
 
 @media (@dm-up) {
   [fe-color-palette] {
-    .title { .fs(20, 1.4); }
+    .title { .fs(18, 1.4); }
     ul {
       &.column-2 { .grid(2, 20); }
       &.column-4 { .grid(4, 20); }
       li {
+        .view { .h(160); }
+        .text { .p(180, 20, 20); }
         .sub-title { .fs(16, 1.4); }
-        .view { .br(10); .h(200);}
+        p:not(.sub-title) { .fs(12, 1.4); }
       }
     }
     & + & { .mt(20); }
