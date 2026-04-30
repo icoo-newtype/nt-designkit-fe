@@ -25,14 +25,13 @@ const cdnHost = import.meta.env.VITE_CDN_HOST;
 <style lang="less">
 @import '~@/less/proj.less';
 
-[fe-video] {
+[fe-video] { .mv(10);
   .caption { .m(8, 0, 10); .fs(14, 1.4); .c(#666); }
   video { .f; .wh(100%); .vab; .br(10); object-fit: contain; }
 }
 
 @media (@tl-up) {
   [fe-video] {
-    .view { .pb(32); }
     .title { .pv(6);
       &:before { .t(6); }
     }

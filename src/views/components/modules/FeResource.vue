@@ -29,7 +29,7 @@ const download = (url: string) => {
         <cdn-img :src="row.thumb"/>
         <div>
           <p class="name">{{ row.filename }}</p>
-          <p>{{ row.type }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ row.size }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ formatCapacity(row.capacity) }}</p>
+          <p>{{ row.type }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ row.size ? row.size + '&nbsp;&nbsp;|&nbsp;&nbsp;' : '' }}{{ formatCapacity(row.capacity) }}</p>
           <b-button variant="default" @click="download(`${cdnHost}/${row.location}`)">Download</b-button>
         </div>
       </div>
@@ -42,12 +42,12 @@ const download = (url: string) => {
 
 [fe-resource] { .mb(20);
   .item {
-    .box { .br(6); .bgc(#F8F8F8); .p(20, 16); .flex; }
-    img { .block; .w(117); aspect-ratio: 16 / 9; object-fit: contain; }
+    .box { .br(6); .bgc(#F8F8F8); .p(20, 16); .flex; .h(110); }
+    img { .block; .w(117); aspect-ratio: 4 / 3; object-fit: contain; }
     img + div { flex-grow: 1; .ml(20); .rel;
-      .name { .fs(15); .semi-bold; }
+      .name { .fs(15); .semi-bold; .ellipsis(1); }
       .name + p { .hide; }
-      .btn { .abs; .lb; .ph(12); }
+      .btn { .abs; .lb; .p(8, 12); }
       .btn-default { .bgc(#efefef); .-a(#efefef);
         &:hover { .bgc(#e0e0e0); .-a(#e0e0e0); }
         &:focus { .bgc(#efefef); .-a(#efefef); }
@@ -60,11 +60,12 @@ const download = (url: string) => {
 @media (@tp-up) {
   [fe-resource] {
     .item {
-      .box { .p(20); }
+      .box { .p(20); .h(160); }
       img { .w(200); }
       img + div { .ml(30);
         .name { .fs(16); }
         .name + p { .block; .mt(4); .c(#666); .fs(13); }
+        .btn { .rb; .p(10, 12); }
       }
     }
   }
@@ -72,8 +73,8 @@ const download = (url: string) => {
 
 @media (@ds-up) {
   [fe-resource] { .mb(30); .grid(2, 30);
-    .item {
-      img + div .btn { .rb; }
+    .item img + div {
+      .name { .ellipsis(2); }
     }
     .item + .item { .mt(0); }
   }
