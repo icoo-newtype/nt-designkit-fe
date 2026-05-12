@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="color 모듈 수정">
+    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="추가 qa">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeResource.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/FeResource.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/modules/FeVideo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/modules/FeVideo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/filterMap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/filterMap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/containers/DefaultContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/containers/DefaultContainer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/admin/ProjectItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/admin/ProjectList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +71,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
     "npm.local.executor": "Run",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "ts.external.directory.path": "/Users/icoo/Project/2026/nt-designkit/designkit-fe/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   },
@@ -138,7 +143,8 @@
       <workItem from="1775452282990" duration="65000" />
       <workItem from="1775455943510" duration="50812000" />
       <workItem from="1776231790679" duration="3452000" />
-      <workItem from="1776659384346" duration="41893000" />
+      <workItem from="1776659384346" duration="45213000" />
+      <workItem from="1778467032509" duration="8406000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -468,7 +474,23 @@
       <option name="project" value="LOCAL" />
       <updated>1777534567793</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="추가 qa">
+      <option name="closed" value="true" />
+      <created>1777541184087</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1777541184087</updated>
+    </task>
+    <task id="LOCAL-00043" summary="추가 qa">
+      <option name="closed" value="true" />
+      <created>1777542760118</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1777542760118</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,6 +499,9 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
     <MESSAGE value="init" />
     <MESSAGE value="list페이지에 필터 적용" />
     <MESSAGE value="qa적용" />
@@ -488,6 +513,7 @@
     <MESSAGE value="리소스 모듈 수정" />
     <MESSAGE value="비디오 모듈 수정" />
     <MESSAGE value="color 모듈 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="color 모듈 수정" />
+    <MESSAGE value="추가 qa" />
+    <option name="LAST_COMMIT_MESSAGE" value="추가 qa" />
   </component>
 </project>

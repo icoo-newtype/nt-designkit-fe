@@ -122,7 +122,7 @@ if (sq.value) getData();
             <TextInput required v-model="apiData.client" placeholder="고객사를 입력해 주세요"/>
           </BFormGroup>
           <BFormGroup horizontal label="공개 설정" class="required">
-            <RadioButton required v-model="apiData.access" :obj="{ 'Y': '공개', 'N': '비공개' }"/>
+            <RadioButton required v-model="apiData.access" :obj="{ 'S': '외부 공유', 'Y': '공개', 'N': '비공개' }"/>
           </BFormGroup>
           <BFormGroup horizontal label="비밀번호" class="required">
             <b-button variant="outline" @click="openPasswordModal">비밀번호 {{ apiData.hasPassword ? '변경' : '등록' }}</b-button>

@@ -110,6 +110,7 @@ router.beforeEach((to, from, next) => {
 
     if (!roles) {
       state.afterLogin = to.path;
+      console.log(auth.user);
       redirect = '/admin/login';
       return false;
     }

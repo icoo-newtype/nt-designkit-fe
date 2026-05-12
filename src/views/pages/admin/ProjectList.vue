@@ -43,10 +43,6 @@ const changePage = (v: number) => {
   getList();
 };
 
-const getStatus = (el: ProjectItem) => {
-  return el.access !== 'Y' ? '비공개' : '공개';
-};
-
 getList();
 </script>
 
@@ -58,7 +54,7 @@ getList();
         <b-row class="justify-content-between mb-50">
           <b-col cols="8" class="d-flex">
             <FilterDropSelect v-model="listParam" :list="['Essential','Professional','Enterprise']" class="w-150 mr-2" placeholder="모든 타입" prop="type" @change="changePage(1)"/>
-            <FilterDropSelect v-model="listParam" :list="[{label: '공개', value: 'Y'},{label: '비공개', value: 'N'}]" class="w-150 mr-2" placeholder="모든 상태" prop="access" @change="changePage(1)"/>
+            <FilterDropSelect v-model="listParam" :list="[{label: '외부 공유', value: 'S'},{label: '공개', value: 'Y'},{label: '비공개', value: 'N'}]" class="w-150 mr-2" placeholder="모든 상태" prop="access" @change="changePage(1)"/>
           </b-col>
           <b-col cols="4">
             <SearchBlock v-model="listParam" @change="changePage(1)" v-if="false"/>
@@ -74,7 +70,7 @@ getList();
             <GridTableColumn width="120" label="고객사">{{ row.client }}</GridTableColumn>
             <GridTableColumn width="120" label="타입">{{ row.type }}</GridTableColumn>
             <GridTableColumn width="160" label="생성일">{{ formDateTime(row.registerDtt) }}</GridTableColumn>
-            <GridTableColumn width="120" label="상태">{{ getStatus(row) }}</GridTableColumn>
+            <GridTableColumn width="120" label="상태">{{ { 'S': '외부 공유', 'Y': '공개', 'N': '비공개' }[row.access] }}</GridTableColumn>
             <GridTableColumn width="50" label="">
               <b-button variant="ghost" class="p-0" @click="$router.push(`/admin/project/article/${row.sq}`)">
                 <img class="w-20" src="/admin_image/edit-pencil.svg" alt="수정">

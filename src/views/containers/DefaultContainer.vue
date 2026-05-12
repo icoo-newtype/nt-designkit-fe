@@ -23,7 +23,7 @@ const logout = () => {
       <Breadcrumb/>
       <div class="account-info">
         <b-dropdown :text="`${authInfo.user?.name}`" variant="ghost">
-          <b-dropdown-item to="/admin/my/password"><i class="icon-lock"></i> 비밀번호변경</b-dropdown-item>
+          <!--          <b-dropdown-item to="/admin/my/password"><i class="icon-lock"></i> 비밀번호변경</b-dropdown-item>-->
           <b-dropdown-item @click="logout"><i class="icon-logout"></i> 로그아웃</b-dropdown-item>
         </b-dropdown>
       </div>
