@@ -47,7 +47,6 @@ const resolve = (module: ModuleItem) => {
 };
 
 watch(() => colorCol2title.value, () => {
-  console.log(colorCol2title.value);
 });
 </script>
 

@@ -12,10 +12,12 @@ import { formDateTime } from '@/utils/timeUtil';
 import { useConfirmCancel } from '@/hooks/useInputDialog';
 import { useToast } from '@/plugins/toast';
 import FilterDropSelect from '@/views/components/form/FilterDropSelect.vue';
+import { useRouter } from 'vue-router';
 
 const confirm = useConfirmCancel();
 const warning = useToast({ type: 'error' });
 const success = useToast({ type: 'success' });
+const router = useRouter();
 
 const listParam = useStoredParam({ perPage: 10 });
 const list = ref<ProjectItem[]>([]);
@@ -65,14 +67,14 @@ getList();
         <GridTable :list="list" :paging="paging" @changePage="changePage" v-model:selected-ids="selectedIds" id-field="sq" use-select use-select-all>
           <template v-slot="{ row, no }">
             <GridTableColumn width="80" label="No" class="pointer">{{ no }}</GridTableColumn>
-            <GridTableColumn label="프로젝트명" class="text-dark"><a @click.stop="$router.push(`/admin/project/article/${row.sq}`)">{{ row.title }}</a>
+            <GridTableColumn label="프로젝트명" class="text-dark"><a @click.stop="router.push(`/admin/project/article/${row.sq}`)">{{ row.title }}</a>
             </GridTableColumn>
             <GridTableColumn width="120" label="고객사">{{ row.client }}</GridTableColumn>
             <GridTableColumn width="120" label="타입">{{ row.type }}</GridTableColumn>
             <GridTableColumn width="160" label="생성일">{{ formDateTime(row.registerDtt) }}</GridTableColumn>
             <GridTableColumn width="120" label="상태">{{ { 'S': '외부 공유', 'Y': '공개', 'N': '비공개' }[row.access] }}</GridTableColumn>
             <GridTableColumn width="50" label="">
-              <b-button variant="ghost" class="p-0" @click="$router.push(`/admin/project/article/${row.sq}`)">
+              <b-button variant="ghost" class="p-0" @click="router.push(`/admin/project/article/${row.sq}`)">
                 <img class="w-20" src="/admin_image/edit-pencil.svg" alt="수정">
               </b-button>
             </GridTableColumn>

@@ -35,12 +35,11 @@ const router = createRouter({
     { path: '/admin/password', component: Password },
     { path: '/admin/403', component: Forbidden },
     {
-      path: '/:project/:category?/:page?',
+      path: '/:project/:page?',
       component: () => import('@/views/pages/page.vue'),
       beforeEnter: async (to, from, next) => {
-        const { project: projectSlug, category, page: pageName } = to.params;
+        const { project: projectSlug, page: pageCode } = to.params;
         const pageStore = usePage();
-
         try {
           // 프로젝트 정보 & 페이지 목록 로드 (slug가 바뀔 때마다 갱신)
           if (pageStore.info?.slug !== projectSlug) {
@@ -53,27 +52,20 @@ const router = createRouter({
             pageStore.setCodes(codes);
           }
 
-          // category / page 없으면 첫 번째 페이지로 리다이렉트
-          if (!category || !pageName) {
-            const first = category
-              ? pageStore.codes.find(c => c.parentCode === category)
-              : pageStore.codes.find(c => c.parentCode !== 'ROOT');
-
+          // page 없으면 첫 번째 페이지로 리다이렉트
+          if (!pageCode) {
+            const first = pageStore.codes[0];
             if (first) {
-              const pageCode = first.code.replace(`${first.parentCode}-`, '');
-              return next(`/${projectSlug}/${first.parentCode}/${pageCode}`);
+              return next(`/${projectSlug}/${first.code}`);
             }
           }
 
-          // category / pageName이 codes에 존재하는지 검증
-          const exists = pageStore.codes.some(
-            c => c.parentCode === category && c.code === `${category}-${pageName}`
-          );
-
+          // pageName이 codes에 존재하는지 검증
+          const exists = pageStore.codes.some(c => c.code === pageCode);
           if (!exists) return next({ path: '/404' });
 
           // 현재 페이지 활성화
-          pageStore.setCurrent(`${category}-${pageName}`);
+          pageStore.setCurrent(pageCode);
 
         } catch (e) {
           console.error('beforeEnter failed:', e);
@@ -110,7 +102,6 @@ router.beforeEach((to, from, next) => {
 
     if (!roles) {
       state.afterLogin = to.path;
-      console.log(auth.user);
       redirect = '/admin/login';
       return false;
     }

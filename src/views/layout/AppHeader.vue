@@ -26,11 +26,11 @@ const router = useRouter();
 
 const type = computed(() => pageStore.info?.type.toLocaleLowerCase());
 const goHome = () => router.push(`/${route.params.project}/`);
+const routePage = (code: string) => router.push(`/${route.params.project}/${code}`);
 
 const anchors = computed(() => pageStore.current?.anchors || []);
 const activeAnchor = inject<Ref<string>>('activeAnchor');
 const isActiveAnchor = ref(false);
-const anchorHeight = computed(() => isActiveAnchor.value ? `${anchors.value?.length * 48 + 24}px` : '0px');
 
 function scrollToTitle(title: string) {
   isActiveAnchor.value = false;
@@ -41,6 +41,19 @@ watch(() => route.fullPath, () => {
   menuOpen.value = false;
 });
 
+const openGroups = ref<Set<number>>(new Set(anchors.value.map((_, i) => i)));
+
+watch(anchors, (val) => {
+  openGroups.value = new Set(val.map((_, i) => i));
+});
+
+function toggleGroup(index: number) {
+  if (openGroups.value.has(index)) {
+    openGroups.value.delete(index);
+  } else {
+    openGroups.value.add(index);
+  }
+}
 </script>
 
 <template>
@@ -56,22 +69,28 @@ watch(() => route.fullPath, () => {
         <div class="drawer-holder">
           <nav class="drawer-menu">
             <ul>
-              <drawer-menu-item v-for="item in pageStore.menuTree" :key="item.code" :item="item" :depth="0"/>
+              <!--              <drawer-menu-item v-for="item in pageStore.menuTree" :key="item.code" :item="item" :depth="0"/>-->
+              <li v-for="item in pageStore.menuTree" :key="item.code">
+                <router-link :to="`/${route.params.project}/${item.code}`">{{ item.label }}</router-link>
+              </li>
             </ul>
           </nav>
         </div>
       </aside>
-      <a class="btn-hamburger" :class="{ on: menuOpen }" @click="toggleDrawer"></a>
+      <a class="btn-hamburger" :class="{ on: menuOpen }" @click="toggleDrawer" v-if="pageStore.menuTree.length > 1"></a>
     </header>
-    <div class="anchors" :class="{ 'on': isActiveAnchor}" v-if="activeAnchor">
+    <div class="anchors" :class="{ 'on': isActiveAnchor }">
       <a class="current" @click="isActiveAnchor = !isActiveAnchor">{{ activeAnchor }}</a>
-      <ol :style="{ height: anchorHeight }">
-        <li v-for="row in anchors" :key="row.name">
-          <a href="#" @click.prevent="scrollToTitle(row.title)" :class="{ 'on': activeAnchor === normalizeString(row.title) }">
-            {{ row.title }}
-          </a>
-        </li>
-      </ol>
+      <div class="list">
+        <ol v-for="(row, groupIndex) in anchors" :key="groupIndex">
+          <li v-for="(item, i) in row" :key="i" v-show="!i || openGroups.has(groupIndex)">
+            <a @click.prevent="!i ? toggleGroup(groupIndex) : scrollToTitle(item.title)" :class="[item.name.toLowerCase(), { 'on': activeAnchor === normalizeString(item.title) }]">
+              {{ item.title }}
+            </a>
+            <a class="arrow" :class="{ on: openGroups.has(groupIndex) }" v-if="!i" @click.stop="toggleGroup(groupIndex)"></a>
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </template>
@@ -89,7 +108,7 @@ watch(() => route.fullPath, () => {
   }
 
   header { .rel; .bgc(#fff); .wf; .h(60); .t-y(0); transition: transform 0.6s ease; z-index: 2;
-    .logo { .rel; .wh(100%, 60); .p(15, 20); .-b(#E8EAED); .z(4);
+    .logo { .rel; .wh(100%, 60); .p(15, 20); .-b(#E8EAED); .z(2);
       a { .block; }
       img { .block; .h(30); }
       h1 { .fs(18, 30); .bold; }
@@ -102,23 +121,10 @@ watch(() => route.fullPath, () => {
   .drawer { .abs; .lt; .wf;
     .drawer-holder { .abs; .rt; .wf; .fvh; .t-x(100%); .bgc(#fff); overflow-y: auto; .-box; transition: transform 0.4s ease;
       .drawer-menu { .p(60, 0, 40);
-        a { .block; .rel;
-          &:after { .cnt; .abs; .rt(20, 50%); .mt(-7); .wh(14); .contain('/image/common/ico-arrow-down.svg'); }
-          &.on:after { transform: rotate(180deg); }
-        }
-        > ul > li > a { .p(20); .fs(18, 1.2); .medium; .-v(#E8EAED); .mt(-1);
-          & + ul { .p(20); }
-        }
-        ul ul {
-          > li + li { .mt(16); }
-          a { .rel; .pv(12); .fs(16, 1.2); .medium;
-            &:after { .r(0); }
-          }
-          ol a { .ph(12); .c(#666); .br(4); .tr-d(.4s);
-            &:after { .hide; }
-            .no-touch &:not(.on):hover { .bgc(#F9F9F9); }
-            &.on { .bgc(#F3F4F6); .br(4); }
-          }
+        ul { .mt(20); }
+        li { .p(20); }
+        a { .block; .rel; .fs(18, 1.4); .semi-bold; .c(#999);
+          &.router-link-active { .c(@c-black); }
         }
       }
     }
@@ -130,23 +136,27 @@ watch(() => route.fullPath, () => {
     header {
       img + h1 { .hide; }
     }
+    .drawer { .hide; }
   }
 
   .anchors { .fix; .t(0); .wf; .z(1); .bgc(#fff); .fs(16, 19);
-    .current { .block; .rel; .h(59); .p(20, 30); .-box; .medium;
+    .current { .block; .rel; .h(59); .p(20); .-box; .medium;
       &:after { .cnt; .abs; .rt(20, 50%); .mt(-7); .wh(14); .contain('/image/common/ico-arrow-down.svg'); }
     }
-    ol { .p(0, 30); .-t(#E8EAED); .tr-d(.3s); .crop;
+    .list { .p(0, 20); .-t(#E8EAED); .tr-d(.3s); .crop; .o(0); .h(0); .max-h(calc(100vh - 60px)); overflow-y: auto; }
+    ol {
       li {
-        a { .block; .pv(12); .c(#999); .tr-d(0.2s);
-          &.on { .c(#000); .medium; }
+        a { .block; .pv(12); .medium; .c(#666); .tr-d(0.2s);
+          &.header { .c(#000); .semi-bold; }
+          &.title { .ph(16); }
+          &.arrow { .hide; }
         }
       }
     }
 
     &.on {
       .current:after { transform: rotate(180deg); }
-      ol { .-b(#E8EAED); .pv(12); }
+      .list { .-b(#E8EAED); .pv(12); .o(1); .h(auto); }
     }
   }
 }
@@ -157,14 +167,33 @@ watch(() => route.fullPath, () => {
       header { .t-y(0); pointer-events: auto; }
     }
     header { .h(70);
-      .logo { .h(70); .p(20, 24); }
+      .logo { .w(auto); .h(70); .p(20, 24); }
       .btn-hamburger { .hide; }
     }
-    .drawer { .rel; .h(calc(100vh - 70px)); .w(240); .-r(#E8EAED);
-      .drawer-holder { .rel; .f; .t-x(0);
+    .drawer { .rt(70, 0); .w(auto); .z(2);
+      .drawer-holder { .rel; .f; .t-x(0); background: none;
         .drawer-menu { .p(0);
-          > ul > li > a { .ph(24);
-            & + ul { .ph(24); }
+          ul { .m; .flex; .h(70); .items-center; }
+          li { .p; }
+          a { .fs(16, 1); }
+          li + li { .ml(40); }
+        }
+      }
+    }
+    .anchors { .lt(0, 70); .h(calc(100vh - 70px)); .w(240); .-r(#E8EAED);
+      .current { .hide; }
+      .list { .p(30, 24); .o(1); .h(auto); .max-h(calc(100vh - 70px)); border: 0; }
+      ol { .mb(30);
+        li { .rel;
+          a { .pv(0); .fs(16, 20);
+            &.header { .c(#000); .semi-bold; .mb(16); }
+            &.arrow { .block; .abs; .rt(0, 50%); .mt(-12); .wh(24); .no-repeat('/image/common/ico-arrow-down.svg'); .bg-c;
+              &.on { transform: rotate(180deg); }
+            }
+            &.title { .p(11, 12); .lh(24); font-weight: 400;
+              .no-touch &:not(.on):hover { .bgc(#F9F9F9); }
+              &.on { .bgc(#F3F4F6); .br(4); }
+            }
           }
         }
       }
@@ -175,13 +204,12 @@ watch(() => route.fullPath, () => {
         img + h1 { .block; .m(12, 0, 0); .medium; .fs(16, 1); }
       }
     }
-    .anchors { .hide; }
   }
 }
 
 @media (@ds-up) {
   [app-header] { .fix; .lt; .wf; z-index: 49;
-    .drawer { .w(300); }
+    .anchors { .w(300); }
     &.essential {
       header { .w(300); }
     }

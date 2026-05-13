@@ -23,8 +23,7 @@ const activeAnchor = ref('');
 provide('activeAnchor', activeAnchor);
 
 const project = computed(() => route.params.project as string);
-const category = computed(() => route.params.category as string);
-const pageName = computed(() => route.params.page as string);
+const code = computed(() => route.params.page as string);
 const isLogin = computed(() => loginStore.isLogin(project.value));
 
 const article = computed(() => JSON.parse(decodeURIComponent(atob(pageStore.current?.article as string))));
@@ -36,8 +35,8 @@ useSocialHead({
 
 // route 변경 시 현재 페이지 동기화
 watchEffect(() => {
-  if (category.value && pageName.value) {
-    pageStore.setCurrent(`${category.value}-${pageName.value}`);
+  if (code.value) {
+    pageStore.setCurrent(code.value);
   }
 });
 
@@ -48,15 +47,14 @@ watch(() => route.hash, async (hash) => {
   await nextTick();
 
   const titleItem = article.value.find(
-      (item: any) => item.type === 'title' && item.value?.title === title
+      (item: any) => (item.type === 'title' || item.type === 'header') && item.value?.title === title
   );
   if (!titleItem) return;
 
   // title과 매칭되는 DOM 요소 찾기
-  const elements = document.querySelectorAll('article [fe-title-text].title');
+  const elements = document.querySelectorAll('article [fe-title-text].title, article [fe-title-text].header');
   const target = Array.from(elements).find(el => {
     const h2 = el.querySelector('p.title');
-
     return normalizeString(h2?.textContent as string) === normalizeString(title);
   });
   if (!target) return;
@@ -64,19 +62,8 @@ watch(() => route.hash, async (hash) => {
   window.scrollTo({ top: (target as HTMLElement).offsetTop, behavior: 'smooth' });
 }, { immediate: true });
 
-// resource 파싱 (info에서 직접)
-const resourceList = computed(() => {
-  const resource = pageStore.info?.resource;
-  if (!resource) return [];
-  try {
-    return JSON.parse(decodeURIComponent(atob(resource as string)));
-  } catch {
-    return [];
-  }
-});
-
 const scrolled = () => {
-  const anchors = document.querySelectorAll('article [fe-title-text].title');
+  const anchors = document.querySelectorAll('article [fe-title-text].title, article [fe-title-text].header');
 
   let currentAnchor: Element | null = null;
 

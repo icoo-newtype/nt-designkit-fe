@@ -6,7 +6,6 @@ import { componentsMapBuilder } from './vite-plugin/componentsMap';
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
-  console.log(env);
   return {
     mode: process.env.MODE,
     root: __dirname,

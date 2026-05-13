@@ -23,7 +23,6 @@ const showMediaPicker = ref(false);
 
 const addResource = (file: FileItem) => {
   // emit('update:modelValue', file);
-  console.log(file);
   data.value[pickerIndex.value].capacity = file.capacity;
   data.value[pickerIndex.value].location = file.location;
   showMediaPicker.value = false;

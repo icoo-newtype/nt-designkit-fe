@@ -167,19 +167,19 @@ updateList(0);
       <b-button variant="default" @click="startReorder" v-else>순서변경</b-button>
     </div>
     <b-row class="mt-2">
-      <b-col cols="6" v-for="(code, depth) in depths" :key="code">
+      <b-col cols="12" v-for="(code, depth) in depths" :key="code">
         <b-card :header="depthLabels[depth]">
           <div class="list-group" v-if="depthsData[depth]">
             <Drag v-model:list="depthsData[depth]" handle=".handle">
               <template v-for="item in depthsData[depth]" :key="item.code">
-                <div class="list-group-item p-3 d-flex justify-content-between align-items-center" :class="{on: item.code === depths[depth + 1], pointer: depth < 3, dim: item.vis !== 'Yes'}" @click="expand(item, depth)">
-                <span>
-                  <i class="bi-list handle mr-1" v-if="reorder"></i>
-                  {{ item.label }}
-                  <template v-if="false">[{{ shrink(item.code, code) }}]</template>
-                </span>
+                <div class="list-group-item p-3 d-flex justify-content-between align-items-center" :class="{on: item.code === depths[depth + 1], pointer: depth < 3, dim: item.access !== 'Y'}" @click.stop="router.push(`/admin/project/${props.slug}/${item.code}`)">
                   <span>
-                    <b-button variant="ghost" class="p-0 mr-3" @click.stop="router.push(`/admin/project/${props.slug}/${item.code}`)" v-if="depth">
+                    <i class="bi-list handle mr-1" v-if="reorder"></i>
+                    {{ item.label }}
+                    <template v-if="false">[{{ shrink(item.code, code) }}]</template>
+                  </span>
+                  <span>
+                    <b-button variant="ghost" class="p-0 mr-3" @click.stop="router.push(`/admin/project/${props.slug}/${item.code}`)">
                       <i class="bi-pencil-square text-black-50"></i>
                     </b-button>
                     <b-button variant="ghost" class="p-0" @click.stop="editItem(item, depth)">

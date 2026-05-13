@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import { ModuleItem } from '@/types/components';
+import { RouteParamValue } from 'vue-router';
 
 export type PageItem = {
   projSq: number;
@@ -14,6 +15,7 @@ export type PageItem = {
   article: string;
   children?: PageItem[];
   anchors: Record<string, string>[];
+  anchorsNum: number;
 };
 
 export type PageResponse = PageItem & { data: string };
@@ -71,15 +73,21 @@ export const usePage = defineStore('pages', () => {
     }));
   }
 
-  function setCurrent(code: string) {
-    current.value = findByCode(code);
+  function setCurrent(code: string | RouteParamValue[]) {
+    current.value = findByCode(code as string);
     if (!current.value) return;
-    current.value.anchors = JSON.parse(decodeURIComponent(atob(current.value?.article as string)))
-      .filter((item: ModuleItem) => item.type === 'title')
+    const flat = JSON.parse(decodeURIComponent(atob(current.value?.article as string)))
+      .filter((item: ModuleItem) => item.type === 'title' || item.type === 'header')
       .map((item: ModuleItem) => ({
         name: item.name,
         title: (item.value as Record<string, string>)?.title ?? ''
       }));
+    current.value.anchorsNum = flat.length;
+    current.value.anchors = flat.reduce((acc: any[][], item: any) => {
+      if (item.name === 'Header') acc.push([]);
+      acc.at(-1)?.push(item);
+      return acc;
+    }, []);
   }
 
   return {

@@ -67,13 +67,12 @@ const getData = async () => {
   Object.assign(apiData, data);
   article.value = apiData.article ? JSON.parse(decodeURIComponent(atob(apiData.article))) : [];
   loading.value = false;
-  console.log(article.value);
 };
 
 provide('filekey', 'PROJ');
 getData();
 
-const subTitles = computed(() => article.value.filter(item => item.type === 'title'));
+const anchors = computed(() => article.value.filter(item => item.type === 'title' || item.type === 'header'));
 
 watch(() => article.value, () => {
 }, { deep: true });
@@ -90,9 +89,8 @@ watch(() => article.value, () => {
     <BForm ref="validator">
       <div class="screen-wrap">
         <div class="lnb">
-          <p>{{ apiData.label }}</p>
           <ul>
-            <li v-for="row in subTitles">{{ row?.value?.title }}</li>
+            <li v-for="row in anchors" :class="row.type">{{ row?.value?.title }}</li>
           </ul>
         </div>
         <div class="screen">
@@ -111,7 +109,7 @@ watch(() => article.value, () => {
 [project-article] {
   .screen-wrap { .p(40); .flex; .rel; }
   .lnb { .p(0, 20); .-a(#E7E7E7); .mr(20); .w(300); .-box; .fs(14, 50); .medium; .sticky; .lt(0, 90); .h(100%);
-    li { .p(0, 16); .c(#555); }
+    li.title { .p(0, 16); .c(#555); }
   }
   .screen { .rel; .p(40, 20, 100); .wf; .-a(#E7E7E7);
     .hero { .flex; .space-between;
