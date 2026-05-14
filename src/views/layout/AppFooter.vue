@@ -56,7 +56,7 @@ const goTop = () => {
 
 @media (@tp-up) {
   [app-footer] { .p(70, 30, 50);
-    .logo img { .max-h(50); }
+    .logo img { .max-w(95%); .max-h(50); }
     .btn-top { .r(30); }
     .split-warp { .grid(2); }
     .resource { .mt(0); }
