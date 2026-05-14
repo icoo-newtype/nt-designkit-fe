@@ -39,7 +39,7 @@ const goTop = () => {
 [app-footer] { .rel; .p(40, 20, 50); .bgc(#000); .c(#fff);
   .btn-top { .block; .abs; .rt(20, -62); .wh(32); .contain('/image/common/ico-top.svg'); }
   .logo {
-    img { .block; .h(50); }
+    img { .block; .max-w(100%); }
   }
   .resource { .mt(80);
     p { .fs(20); .semi-bold; .mb(30); }
@@ -56,6 +56,7 @@ const goTop = () => {
 
 @media (@tp-up) {
   [app-footer] { .p(70, 30, 50);
+    .logo img { .max-w(45%); .max-h(50); }
     .btn-top { .r(30); }
     .split-warp { .grid(2); }
     .resource { .mt(0); }

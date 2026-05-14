@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="추가 qa">
-      <change beforePath="$PROJECT_DIR$/.env.localspring" beforeDir="false" afterPath="$PROJECT_DIR$/.env.localspring" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/components/CodeManager.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/CodeManager.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/error/403.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/error/403.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/error/404.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/error/404.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout/AppHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectArticle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/admin/ProjectArticle.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/pages/admin/ProjectList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/admin/ProjectList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/pages/page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/pages/page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/layout/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout/AppFooter.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +139,7 @@
       <workItem from="1775455943510" duration="50812000" />
       <workItem from="1776231790679" duration="3452000" />
       <workItem from="1776659384346" duration="45213000" />
-      <workItem from="1778467032509" duration="27765000" />
+      <workItem from="1778467032509" duration="32208000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -502,7 +493,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778561277046</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="추가 qa">
+      <option name="closed" value="true" />
+      <created>1778658179040</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1778658179040</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
