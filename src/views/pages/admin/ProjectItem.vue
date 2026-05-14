@@ -132,7 +132,7 @@ if (sq.value) getData();
             <p class="description">권장 이미지 크기 480x90 | 용량 1MB</p>
           </BFormGroup>
           <BFormGroup horizontal label="로고 이미지 <br>(Footer용)">
-            <ImageSelect :filekey="apiData.slug as string" v-model="apiData.footerLogoImage" class="logo"/>
+            <ImageSelect :filekey="apiData.slug as string" v-model="apiData.footerLogoImage" class="logo black"/>
             <p class="description">권장 이미지 크기 480x90 | 용량 1MB</p>
           </BFormGroup>
           <BFormGroup horizontal label="OG 이미지" class="combine">
@@ -194,6 +194,7 @@ if (sq.value) getData();
         [image-select] { .w(600); .min-h(300);
           &.logo { .w(200); .min-h(auto);
             .holder { .min-h(120); }
+            &.black .holder { .bgc(#111); }
           }
         }
         .description { .mt(5); .fs(12, 1.4); .medium; .c(#898989); }
