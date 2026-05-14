@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="추가 qa">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/layout/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layout/AppFooter.vue" afterDir="false" />
-    </list>
+    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="푸터 로고 크기" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +136,7 @@
       <workItem from="1775455943510" duration="50812000" />
       <workItem from="1776231790679" duration="3452000" />
       <workItem from="1776659384346" duration="45213000" />
-      <workItem from="1778467032509" duration="32208000" />
+      <workItem from="1778467032509" duration="32565000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -501,7 +498,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778658179040</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="푸터 로고 크기">
+      <option name="closed" value="true" />
+      <created>1778737738232</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1778737738232</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,6 +530,7 @@
     <MESSAGE value="비디오 모듈 수정" />
     <MESSAGE value="color 모듈 수정" />
     <MESSAGE value="추가 qa" />
-    <option name="LAST_COMMIT_MESSAGE" value="추가 qa" />
+    <MESSAGE value="푸터 로고 크기" />
+    <option name="LAST_COMMIT_MESSAGE" value="푸터 로고 크기" />
   </component>
 </project>
