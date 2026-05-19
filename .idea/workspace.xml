@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="푸터 로고 크기">
-      <change afterPath="$PROJECT_DIR$/public/image/common/pwd-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ea4cbc77-f3a7-4deb-8127-2ae713effcf8" name="Changes" comment="패스워드 가드 화면 업데이트">
       <change beforePath="$PROJECT_DIR$/src/views/components/PasswordGuard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/PasswordGuard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/common/BButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/common/BButton.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,15 +139,7 @@
       <workItem from="1775455943510" duration="50812000" />
       <workItem from="1776231790679" duration="3452000" />
       <workItem from="1776659384346" duration="45213000" />
-      <workItem from="1778467032509" duration="39893000" />
-    </task>
-    <task id="LOCAL-00001" summary="init">
-      <option name="closed" value="true" />
-      <created>1775029596360</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1775029596360</updated>
+      <workItem from="1778467032509" duration="41415000" />
     </task>
     <task id="LOCAL-00002" summary="init">
       <option name="closed" value="true" />
@@ -534,7 +525,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778739269849</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="패스워드 가드 화면 업데이트">
+      <option name="closed" value="true" />
+      <created>1779168401078</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1779168401078</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,6 +558,7 @@
     <MESSAGE value="color 모듈 수정" />
     <MESSAGE value="추가 qa" />
     <MESSAGE value="푸터 로고 크기" />
-    <option name="LAST_COMMIT_MESSAGE" value="푸터 로고 크기" />
+    <MESSAGE value="패스워드 가드 화면 업데이트" />
+    <option name="LAST_COMMIT_MESSAGE" value="패스워드 가드 화면 업데이트" />
   </component>
 </project>

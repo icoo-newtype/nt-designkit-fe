@@ -43,7 +43,7 @@ const checkPassword = async () => {
       <div class="logo"></div>
       <p>Enter password to access the site.</p>
       <text-input required type="password" placeholder="Password" v-model="password" @enter="checkPassword" mandatory no-message autocomplete="current-password"/>
-      <b-button variant="secondary" @click="checkPassword">Submit</b-button>
+      <b-button variant="secondary" @click="checkPassword" :disabled="!password.length">Submit</b-button>
     </b-form>
     <p class="copyright">Design Kit is a design asset <br>service by Newtype Imageworks</p>
   </div>
@@ -57,8 +57,9 @@ const checkPassword = async () => {
   .logo { .ib; .wh(111, 24); .contain('/image/common/pwd-logo.png')}
   .logo + p { .mt(20); .fs(14); .c(#aaa); }
   [text-input] { .m(36, 0, 30); .bgc(#333); .-a(#333); .c(#fff); }
-  .btn.btn-secondary { .wf; .bgc(#E7E7E7); .-a(#E7E7E7); .c(#888);
-    .no-touch &:hover { .bgc(#fff); .-a(#fff); color: #111;}
+  .btn.btn-secondary { .wf; .bgc(#fff); .-a(#fff); .c(#111); .o(.9); transition: all .3s;
+    &:disabled { .bgc(#E7E7E7); .-a(#E7E7E7); .c(#888); }
+    .no-touch &:hover { .bgc(#fff); .-a(#fff); .c(#111); .o(1); }
   }
   .copyright { .fix; .lb(0, 40); .wf; .tc; .fs(14, 1.3); .c(#fff); .o(0.5); }
 }
