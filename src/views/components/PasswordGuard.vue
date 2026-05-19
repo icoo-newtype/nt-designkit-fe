@@ -40,31 +40,40 @@ const checkPassword = async () => {
 <template>
   <div class="password-form">
     <b-form ref="validator">
-      <div class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"/>
-        </svg>
-      </div>
-      <p>Enter password to access the <br>site.</p>
+      <div class="logo"></div>
+      <p>Enter password to access the site.</p>
       <text-input required type="password" placeholder="Password" v-model="password" @enter="checkPassword" mandatory no-message autocomplete="current-password"/>
       <b-button variant="secondary" @click="checkPassword">Submit</b-button>
     </b-form>
+    <p class="copyright">Design Kit is a design asset <br>service by Newtype Imageworks</p>
   </div>
 </template>
 
 <style lang="less">
 @import '~@/less/proj.less';
 
-.password-form { .flex-center(); .h(100vh); .tc;
-  > div { .p(0, 47); .wf; .-box; }
-  .icon + p { .mt(12); .fs(12); .c(#777); }
-  [text-input] { .mv(30); }
-  .btn { .wf; }
+.password-form { .flex-center(); .h(100vh); .tc; .bgc(#0D0D0D);
+  > div { .w(240); .mh-c; }
+  .logo { .ib; .wh(111, 24); .contain('/image/common/pwd-logo.png')}
+  .logo + p { .mt(20); .fs(14); .c(#aaa); }
+  [text-input] { .m(36, 0, 30); .bgc(#333); .-a(#333); .c(#fff); }
+  .btn.btn-secondary { .wf; .bgc(#E7E7E7); .-a(#E7E7E7); .c(#888);
+    .no-touch &:hover { .bgc(#fff); .-a(#fff); color: #111;}
+  }
+  .copyright { .fix; .lb(0, 40); .wf; .tc; .fs(14, 1.3); .c(#fff); .o(0.5); }
 }
 
-@media (@tp-up) {
+@media (@tl-up) {
   .password-form {
-    > div { .p; .w(280); }
+    .logo { .wh(139, 30); }
+    [text-input] { .m(50, 0, 30); }
+    .copyright { .lb(0, 30); }
+  }
+}
+
+@media (@dm-up) {
+  .password-form {
+    > div { .w(300); }
   }
 }
 </style>
