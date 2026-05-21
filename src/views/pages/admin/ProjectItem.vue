@@ -125,7 +125,8 @@ if (sq.value) getData();
             <RadioButton required v-model="apiData.access" :obj="{ 'S': '외부 공유', 'Y': '공개', 'N': '비공개' }"/>
           </BFormGroup>
           <BFormGroup horizontal label="비밀번호" class="required">
-            <b-button variant="outline" @click="openPasswordModal">비밀번호 {{ apiData.hasPassword ? '변경' : '등록' }}</b-button>
+            <!--            <b-button variant="outline" @click="openPasswordModal">비밀번호 {{ apiData.hasPassword ? '변경' : '등록' }}</b-button>-->
+            <TextInput v-model="apiData.password" placeholder="비밀번호를 입력해 주세요"/>
           </BFormGroup>
           <BFormGroup horizontal label="로고 이미지 <br>(GNB용)">
             <ImageSelect :filekey="apiData.slug as string" v-model="apiData.logoImage" class="logo"/>
