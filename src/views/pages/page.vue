@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, provide, ref, watch, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
-import { useLoginPageStore } from '@/store/auth';
+import { useAuthInfo, useLoginPageStore } from '@/store/auth';
 import PasswordGuard from '@/views/components/PasswordGuard.vue';
+import Maintenance from '@/views/components/Maintenance.vue';
 import { useBrowserStore } from '@/store/browser.store';
 import AppHeader from '@/views/layout/AppHeader.vue';
 import AppFooter from '@/views/layout/AppFooter.vue';
@@ -11,9 +12,11 @@ import { getComponentsMap } from '@/views/components/modules';
 import { useSocialHead } from '@/utils/meta';
 import { useState } from '@/store/state';
 import { normalizeString, useWindowEvent } from '@/utils';
+import oax from '@/utils/oax';
 
 const route = useRoute();
 const state = useState();
+const authInfo = useAuthInfo();
 const loginStore = useLoginPageStore();
 const browserStore = useBrowserStore();
 const pageStore = usePage();
@@ -25,6 +28,8 @@ provide('activeAnchor', activeAnchor);
 const project = computed(() => route.params.project as string);
 const code = computed(() => route.params.page as string);
 const isLogin = computed(() => loginStore.isLogin(project.value));
+// 점검중: 관리자 로그인 상태에서는 그대로 노출
+const isMaintenance = computed(() => pageStore.info?.maintenance === 'Y' && !authInfo.isAuthenticated);
 
 const article = computed(() => JSON.parse(decodeURIComponent(atob(pageStore.current?.article as string))));
 
@@ -38,6 +43,12 @@ watchEffect(() => {
   if (code.value) {
     pageStore.setCurrent(code.value);
   }
+});
+
+// 페이지 이동 시 점검중 여부 재확인 (최초 진입은 router에서 로드)
+watch(code, async () => {
+  const { data } = await oax.get<ProjectItem>(`/api/project/${project.value}`);
+  if (data && pageStore.info) pageStore.info.maintenance = data.maintenance;
 });
 
 watch(() => route.hash, async (hash) => {
@@ -83,7 +94,8 @@ useWindowEvent('scroll', scrolled);
 </script>
 
 <template>
-  <password-guard v-if="!isLogin" :project="project"/>
+  <maintenance v-if="isMaintenance"/>
+  <password-guard v-else-if="!isLogin" :project="project"/>
   <div v-else project-page :class="[
       browserStore.scrollDirection,
       browserStore.theme,

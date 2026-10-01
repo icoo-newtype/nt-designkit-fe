@@ -27,6 +27,7 @@ type ProjectItem = {
   type: string;
   client: string;
   access: 'Y' | 'N';
+  maintenance: 'Y' | 'N';
   password: string;
   logoImage: string;
   footerLogoImage: string;

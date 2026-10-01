@@ -72,7 +72,7 @@ getList();
             <GridTableColumn width="120" label="고객사">{{ row.client }}</GridTableColumn>
             <GridTableColumn width="120" label="타입">{{ row.type }}</GridTableColumn>
             <GridTableColumn width="160" label="생성일">{{ formDateTime(row.registerDtt) }}</GridTableColumn>
-            <GridTableColumn width="120" label="상태">{{ { 'S': '외부 공유', 'Y': '공개', 'N': '비공개' }[row.access] }}</GridTableColumn>
+            <GridTableColumn width="120" label="상태">{{ { 'S': '외부 공유', 'Y': '공개', 'N': '비공개' }[row.access] }}<span class="text-danger" v-if="row.maintenance === 'Y'"> (점검중)</span></GridTableColumn>
             <GridTableColumn width="50" label="">
               <b-button variant="ghost" class="p-0" @click="router.push(`/admin/project/article/${row.sq}`)">
                 <img class="w-20" src="/admin_image/edit-pencil.svg" alt="수정">

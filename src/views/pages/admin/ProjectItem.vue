@@ -21,6 +21,7 @@ import { useModal } from '@/plugins/modal';
 import PasswordModal from '@/views/components/modal/PasswordModal.vue';
 import Drag from '@/views/components/article/Drag.vue';
 import MediaPicker from '@/views/components/form/MediaPicker.vue';
+import BSwitch from '@/views/components/common/BSwtich.vue';
 
 const state = useState();
 const router = useRouter();
@@ -90,6 +91,14 @@ const openPasswordModal = async () => {
   apiData.password = await passwordModal();
 };
 
+// 점검중 플래그는 저장 버튼과 무관하게 즉시 반영
+const toggleMaintenance = async (on: boolean) => {
+  const maintenance = on ? 'Y' : 'N';
+  await oax.post(`/api/admin/project/maintenance`, { sq: apiData.sq, maintenance });
+  apiData.maintenance = maintenance;
+  success(on ? '점검중으로 설정되었습니다.' : '점검중이 해제되었습니다.');
+};
+
 reloadPage();
 if (sq.value) getData();
 </script>
@@ -112,6 +121,10 @@ if (sq.value) getData();
       <div class="setup" v-else>
         <TextBox required class="title" placeholder="프로젝트명을 입력해주세요" v-model="apiData.title" no-resize/>
         <a :href="`${state.host}/${apiData.slug}`" target="_blank">{{ `${state.host}/${apiData.slug}` }}</a>
+        <div class="maintenance-switch">
+          <b-switch variant="danger" label="점검중" :model-value="apiData.maintenance === 'Y'" @update:model-value="toggleMaintenance"/>
+          <p class="description">켜면 방문자에게 점검중 페이지가 노출됩니다. (관리자 로그인 상태에서는 그대로 보입니다)</p>
+        </div>
         <code-manager :sq="apiData.sq" :slug="apiData.slug"/>
         <h2 class="mt-100">기본 정보</h2>
         <div class="grid">
@@ -177,6 +190,9 @@ if (sq.value) getData();
   .setup { .p(0, 40); .mt(50);
     .title { .fs(36, 1.5); .bold; .w(600); .bgc(#fff); .-a; .p; }
     .title + a:hover { .underline; }
+    .maintenance-switch { .mt(20);
+      .description { .mt(5); .fs(12, 1.4); .medium; .c(#898989); }
+    }
     h2 { .fs(24); .bold; .mb(20); }
     .category {
       .category-row { .bgc(#F7F7F7); .-a(#F7F7F7); .p(20, 20, 18);
