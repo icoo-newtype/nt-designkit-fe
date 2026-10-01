@@ -56,7 +56,7 @@ const checkPassword = async () => {
   > div { .w(240); .mh-c; }
   .logo { .ib; .wh(111, 24); .contain('/image/common/pwd-logo.png')}
   .logo + p { .mt(20); .fs(14); .c(#aaa); }
-  [text-input] { .m(36, 0, 30); .bgc(#333); .-a(#333); .c(#fff); }
+  [text-input] { .m(36, 0, 30); .fs(16); .bgc(#333); .-a(#333); .c(#fff); }
   .btn.btn-secondary { .wf; .bgc(#fff); .-a(#fff); .c(#111); .o(.9); transition: all .3s;
     &:disabled { .bgc(#E7E7E7); .-a(#E7E7E7); .c(#888); }
     .no-touch &:hover { .bgc(#fff); .-a(#fff); .c(#111); .o(1); }
