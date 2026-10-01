@@ -5,8 +5,8 @@
   <div class="maintenance">
     <div>
       <div class="logo"></div>
-      <h2>Under maintenance</h2>
-      <p>업데이트 중입니다. <br>잠시 후 다시 접속해 주세요.</p>
+      <h2>Updates Coming Soon</h2>
+      <p>업데이트가 완료되면 알려드릴게요.</p>
     </div>
     <p class="copyright">Design Kit is a design asset <br>service by Newtype Imageworks</p>
   </div>
