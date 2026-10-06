@@ -37,6 +37,17 @@ const init = () => {
   };
 };
 
+// 배포로 예전 빌드 파일이 사라져 동적 import가 실패하면 새로고침 (무한 반복 방지: 1분에 한 번)
+window.addEventListener('vite:preloadError', (event) => {
+  const key = 'preloadErrorReloadedAt';
+  let last = 0;
+  try { last = Number(sessionStorage.getItem(key) ?? 0); } catch { /* storage 접근 불가 */ }
+  if (Date.now() - last < 60_000) return;
+  event.preventDefault();
+  try { sessionStorage.setItem(key, String(Date.now())); } catch { /* storage 접근 불가 */ }
+  location.reload();
+});
+
 const authInfo = useAuthInfo();
 const token = getCookie('authToken');
 if (token) oax.setAuthToken(token);
