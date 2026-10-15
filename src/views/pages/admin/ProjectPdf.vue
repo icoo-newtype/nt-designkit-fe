@@ -128,13 +128,15 @@ load();
     .caption { .abs; left: unit(round(60 * @cover-scale), px); bottom: 60px; }
   }
 
-  .detail { .grid; grid-template-columns: 3fr 7fr; gap: 80px; .p(120, 120);
-    .title { .fs(56, 1.25); .medium; }
-    .title + div { .mt(32); .fs(24, 1.7); }
-    .view { aspect-ratio: 16 / 9; .br(16); .crop; .bgc(#F7F7F7);
-      img { .block; .wh(100%); object-fit: contain; }
+  // 사이트 fe-detail(PC: 콘텐츠 폭 1300px 기준 title 24 / text 16 / 간격 12 / gap 46)을 1920px 페이지에 같은 비율로 확대
+  @detail-scale: (1920 / 1300);
+  .detail { .grid; grid-template-columns: 3fr 7fr; gap: unit(round(46 * @detail-scale), px); .p(120, 120); letter-spacing: -0.02em;
+    .title { font-size: unit(round(24 * @detail-scale), px); line-height: 1.3; .semi-bold; .c(#111); letter-spacing: -0.02em; }
+    .title + div { margin-top: unit(round(12 * @detail-scale), px); font-size: unit(round(16 * @detail-scale), px); line-height: 1.5; .c(#000); }
+    .view { aspect-ratio: 687 / 456; border-radius: unit(round(10 * @detail-scale), px); .crop; .bgc(#F7F7F7);
+      img { .block; .wh(100%); object-fit: cover; }
     }
-    .caption { .mt(16); }
+    .caption { margin-top: unit(round(8 * @detail-scale), px); }
   }
 }
 
