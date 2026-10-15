@@ -91,6 +91,9 @@ const openPasswordModal = async () => {
   apiData.password = await passwordModal();
 };
 
+// 가로형 모듈(Cover, Detail)을 PDF로 출력하는 화면을 새 탭으로 연다
+const openPdf = () => window.open(`/admin/pdf/${apiData.sq}`, '_blank');
+
 // 점검중 플래그는 저장 버튼과 무관하게 즉시 반영
 const toggleMaintenance = async (on: boolean) => {
   const maintenance = on ? 'Y' : 'N';
@@ -121,6 +124,7 @@ if (sq.value) getData();
       <div class="setup" v-else>
         <TextBox required class="title" placeholder="프로젝트명을 입력해주세요" v-model="apiData.title" no-resize/>
         <a :href="`${state.host}/${apiData.slug}`" target="_blank">{{ `${state.host}/${apiData.slug}` }}</a>
+        <b-button variant="outline" size="sm" class="pdf-btn" @click="openPdf">PDF 저장</b-button>
         <div class="maintenance-switch">
           <b-switch variant="danger" label="점검중" :model-value="apiData.maintenance === 'Y'" @update:model-value="toggleMaintenance"/>
           <p class="description">켜면 방문자에게 점검중 페이지가 노출됩니다. (관리자 로그인 상태에서는 그대로 보입니다)</p>
@@ -190,6 +194,7 @@ if (sq.value) getData();
   .setup { .p(0, 40); .mt(50);
     .title { .fs(36, 1.5); .bold; .w(600); .bgc(#fff); .-a; .p; }
     .title + a:hover { .underline; }
+    .pdf-btn { .ml(12); }
     .maintenance-switch { .mt(20);
       .description { .mt(5); .fs(12, 1.4); .medium; .c(#898989); }
     }

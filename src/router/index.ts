@@ -34,6 +34,7 @@ const router = createRouter({
     { path: '/admin/login', component: Login },
     { path: '/admin/password', component: Password },
     { path: '/admin/403', component: Forbidden },
+    { path: '/admin/pdf/:sq', component: () => import('@/views/pages/admin/ProjectPdf.vue') },
     {
       path: '/:project/:page?',
       component: () => import('@/views/pages/page.vue'),

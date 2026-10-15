@@ -35,6 +35,10 @@ const tabList = ref([
     name: 'Appendix',
     subList: ['Blank', 'Color Palette', 'Resources'],
   },
+  {
+    name: 'PDF Page (16:9)',
+    subList: ['Cover', 'Detail'],
+  },
 ]);
 const mediaCol2type = ref('basic');
 const mediaCol3type = ref('basic');
@@ -234,6 +238,33 @@ watch(() => colorCol2title.value, () => {
             </div>
           </b-card>
         </template>
+        <template v-if="selected.active === 'Cover'">
+          <b-card @click="resolve({ name:'Cover', comp: 'Cover', type: 'cover', value: null })">
+            <div class="text">
+              <p class="title">Cover</p>
+              <p class="sum">가로 표지형 · PDF 저장 시 한 페이지로 출력됩니다.</p>
+            </div>
+            <div class="view pdf-cover">
+              <p>타이틀을 입력해 주세요</p>
+              <p>텍스트를 입력해 주세요</p>
+            </div>
+          </b-card>
+        </template>
+        <template v-if="selected.active === 'Detail'">
+          <b-card @click="resolve({ name:'Detail', comp: 'Detail', type: 'detail', value: null })">
+            <div class="text">
+              <p class="title">Detail</p>
+              <p class="sum">가로 상세 페이지형 · PDF 저장 시 한 페이지로 출력됩니다.</p>
+            </div>
+            <div class="view pdf-detail">
+              <div>
+                <p>타이틀을 입력해 주세요</p>
+                <p>텍스트를 입력해 주세요</p>
+              </div>
+              <div class="img"><img src="/admin_image/module/img.svg" alt=""></div>
+            </div>
+          </b-card>
+        </template>
         <template v-if="selected.active === 'Resources'">
           <b-card>
             <div class="text">
@@ -295,6 +326,17 @@ watch(() => colorCol2title.value, () => {
         }
         .view { .br(5); .bgc(#fff); .-a(#fff); .c(#666); transition: background-color .2s ease;
           &:hover { .bgc(#e0e0e0); .-a(#e0e0e0); }
+          &.pdf-cover { .flex; .flex-column; .justify-center; aspect-ratio: 16 / 9; .p(50); .bgc(#C4BEF7); .-a(#C4BEF7); .c(#111);
+            p { .fs(40, 1.2); .medium; }
+            p + p { .mt(30); .fs(18); }
+          }
+          &.pdf-detail { .grid; grid-template-columns: 3fr 7fr; gap: 30px; .p(40);
+            p { .fs(22, 1.3); .medium; }
+            p + p { .mt(12); .fs(14); }
+            .img { .flex-center; aspect-ratio: 16 / 9; .bgc(#F7F7F7); .br(5);
+              img { .w(48); }
+            }
+          }
           &.header { .p(50, 50, 60);
             p { .bold; .fs(56); }
             p + p { .mt(120); .fs(20); }
