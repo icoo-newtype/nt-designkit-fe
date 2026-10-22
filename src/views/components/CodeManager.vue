@@ -124,7 +124,8 @@ const closeDetail = () => {
 };
 const deleteItem = async () => {
   await confirm('정말 삭제하시겠습니까?');
-  await oax.delete('/api/admin/code', detailInfo.value);
+  // 삭제는 projSq, code만 필요 (article 등을 같이 보내면 쿼리스트링이 길어져 414 발생)
+  await oax.delete('/api/admin/code', { projSq: props.sq, code: detailInfo.value.code });
   success('삭제 되었습니다.');
   closeDetail();
   await updateList(editDepth.value);
